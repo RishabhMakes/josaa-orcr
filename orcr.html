@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta http-equiv="Cache-Control" content="no-store" />
+<title>JoSAA OR/CR Explorer</title>
+<style>
+  :root {
+    --bg: #0f1419;
+    --panel: #161b22;
+    --panel-2: #1e2530;
+    --border: #2a3340;
+    --text: #e4e6eb;
+    --muted: #8a94a6;
+    --accent: #5eb1ff;
+    --accent-2: #7ee787;
+    --warn: #ffb347;
+    --bad: #ff6b6b;
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #f6f7f9;
+      --panel: #ffffff;
+      --panel-2: #f0f3f7;
+      --border: #d8dee6;
+      --text: #1a1f2b;
+      --muted: #5a6470;
+      --accent: #1f6feb;
+      --accent-2: #2da44e;
+      --warn: #bf8700;
+      --bad: #cf222e;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font: 14px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+  header { padding: 16px 24px; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  header h1 { font-size: 18px; margin: 0; }
+  header .sub { color: var(--muted); font-size: 12px; }
+  main { padding: 16px 24px 32px; }
+  footer { padding: 16px 24px 32px; border-top: 1px solid var(--border); background: var(--panel); }
+  footer .data-source { margin: 0; border: none; padding: 0; background: transparent; }
+  .data-source { background: var(--panel); border: 1px solid var(--border); padding: 12px; border-radius: 8px; margin-bottom: 16px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .data-source code { background: var(--panel-2); padding: 2px 6px; border-radius: 4px; }
+  .upload-btn { display: inline-flex; align-items: center; gap: 6px; padding: 7px 12px; border: 1px solid var(--border); border-radius: 6px; background: var(--panel-2); color: var(--text); cursor: pointer; font: inherit; }
+  .upload-btn:hover { filter: brightness(1.05); }
+  .filehelp { margin-left: auto; }
+  .filters { background: var(--panel); border: 1px solid var(--border); padding: 16px; border-radius: 8px; margin-bottom: 16px; }
+  .filters-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+  .filters-title { margin: 0; font-size: 14px; font-weight: 600; color: var(--muted); }
+  .filter-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+  .filter-block label.title { font-size: 12px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; display: block; margin-bottom: 6px; }
+  .filter-block .options { background: var(--panel-2); border: 1px solid var(--border); border-radius: 6px; max-height: 130px; overflow: auto; padding: 6px 8px; }
+  .filter-block .options label { display: flex; align-items: center; gap: 6px; padding: 2px 0; font-size: 13px; }
+  .filter-block input[type=search], .filter-block input[type=number], .filter-block select { width: 100%; background: var(--panel-2); border: 1px solid var(--border); color: var(--text); border-radius: 6px; padding: 7px 9px; font: inherit; }
+  .filter-block input[type=search]::placeholder { color: var(--muted); }
+  .rank-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 16px; padding-top: 16px; padding-bottom: 16px; border-top: 1px dashed var(--border); border-bottom: 1px dashed var(--border); }
+  .rank-row .hint { color: var(--muted); font-size: 12px; margin-top: 4px; }
+  .actions { display: flex; justify-content: space-between; align-items: center; margin-top: 16px; gap: 12px; flex-wrap: wrap; }
+  .actions .count { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .actions .count #resultCount { color: var(--muted); font-size: 13px; }
+  button { background: var(--accent); color: white; border: none; padding: 8px 14px; border-radius: 6px; cursor: pointer; font: inherit; }
+  button.secondary { background: var(--panel-2); color: var(--text); border: 1px solid var(--border); }
+  button:hover { filter: brightness(1.1); }
+  button[aria-pressed="true"] { box-shadow: inset 0 0 0 2px rgba(255,255,255,0.35); filter: brightness(0.9); }
+  .table-wrap { background: var(--panel); border: 1px solid var(--border); border-radius: 8px; overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; font-size: 13px; }
+  thead th { position: sticky; top: 0; background: var(--panel-2); text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--border); cursor: pointer; user-select: none; white-space: nowrap; }
+  thead th .arrow { color: var(--muted); margin-left: 4px; }
+  tbody td { padding: 8px 12px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+  tbody tr:hover { background: var(--panel-2); }
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .year-badge { font-variant-numeric: tabular-nums; font-weight: 500; }
+  .year-2024 { color: var(--warn); }
+  .duration-badge { font-variant-numeric: tabular-nums; font-weight: 500; }
+  .duration-5 { color: var(--warn); }
+  .pill { display: inline-block; padding: 1px 7px; border-radius: 4px; font-size: 11px; background: var(--panel-2); border: 1px solid var(--border); color: var(--muted); }
+  .star-col { width: 32px; padding-left: 8px; padding-right: 4px; text-align: center; cursor: default; }
+  thead th.star-col { cursor: default; }
+  button.star { background: transparent; border: none; padding: 2px 4px; font-size: 16px; line-height: 1; color: var(--muted); cursor: pointer; border-radius: 4px; transition: background 0.15s ease; }
+  button.star:hover { background: var(--panel-2); color: var(--warn); }
+  button.star.on { color: var(--warn); }
+  .drag-handle-col { width: 28px; }
+  thead th.drag-handle-col { cursor: default; }
+  td.drag-handle { cursor: grab; color: var(--muted); width: 28px; text-align: center; user-select: none; letter-spacing: -2px; font-size: 16px; padding-left: 6px; padding-right: 2px; }
+  td.drag-handle:active { cursor: grabbing; }
+  tr.program-group.dragging td { opacity: 0.45; }
+  tr.program-group.drop-target td { border-top: 2px solid var(--accent); }
+  th.comment-col { width: 260px; min-width: 220px; max-width: 320px; cursor: default; }
+  td.comment-cell { width: 260px; min-width: 220px; max-width: 320px; }
+  td.comment-cell .comment-input { display: block; width: 100%; box-sizing: border-box; background: var(--panel-2); border: 1px solid var(--border); color: var(--text); border-radius: 6px; padding: 6px 8px; font: inherit; line-height: 1.4; resize: none; overflow: hidden; white-space: pre-wrap; word-break: break-word; overflow-wrap: anywhere; min-height: 32px; }
+  td.comment-cell .comment-input:focus { outline: 1px solid var(--accent); border-color: var(--accent); }
+  .empty { padding: 32px; color: var(--muted); text-align: center; }
+  .error { color: var(--bad); }
+  .muted { color: var(--muted); }
+  details summary { cursor: pointer; color: var(--muted); }
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>JoSAA Opening / Closing Rank Explorer</h1>
+    <div class="sub">Filter institutes, programs, quotas and seat types — or enter your rank to see eligible branches.</div>
+  </div>
+</header>
+<main>
+  <div class="filters">
+    <div class="filters-header">
+      <h2 class="filters-title">Filters</h2>
+      <button id="resetBtn" class="secondary">Reset filters</button>
+    </div>
+    <div class="filter-grid">
+      <div class="filter-block">
+        <label class="title" for="filterYear">Year</label>
+        <select id="filterYear">
+          <option value="2025" selected>2025</option>
+          <option value="2024">2024</option>
+          <option value="all">Both (2024 + 2025)</option>
+        </select>
+      </div>
+      <div class="filter-block">
+        <label class="title">Institute group</label>
+        <div class="options" id="filterInstituteGroup">
+          <label title="IIT Bombay, Delhi, Kanpur, Kharagpur, Madras, Guwahati, Roorkee">
+            <input type="checkbox" value="top7" checked> Top 7 IITs
+          </label>
+          <label title="IIT Gandhinagar, IIT Hyderabad">
+            <input type="checkbox" value="newGood" checked> New good IITs
+          </label>
+          <label title="All other IITs">
+            <input type="checkbox" value="others"> Others
+          </label>
+        </div>
+      </div>
+      <div class="filter-block">
+        <label class="title" for="filterProgram">Branch / degree contains</label>
+        <input id="filterProgram" type="search" placeholder="e.g. Computer, Aero, Dual Degree">
+      </div>
+      <div class="filter-block" id="genderFilterBlock" hidden>
+        <label class="title">Gender</label>
+        <div class="options" id="filterGender"></div>
+      </div>
+      <div class="filter-block">
+        <label class="title">Show columns</label>
+        <div class="options" id="columnToggles">
+          <label><input type="checkbox" id="toggleDegree"> Degree Name</label>
+          <label><input type="checkbox" id="toggleGender"> Gender</label>
+          <label><input type="checkbox" id="toggleOpening"> Opening rank</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="rank-row">
+      <div class="filter-block">
+        <label class="title" for="myRank">Your Rank (optional)</label>
+        <input id="myRank" type="number" min="1" step="1" placeholder="e.g. 8500">
+        <div class="hint">Filters to rows where <strong>Closing&nbsp;Rank&nbsp;≥&nbsp;your&nbsp;rank</strong> (i.e. you would have got in).</div>
+      </div>
+      <div class="filter-block">
+        <label class="title" for="rankBuffer">Stretch margin (below your rank)</label>
+        <input id="rankBuffer" type="number" min="0" step="100" placeholder="e.g. 500">
+        <div class="hint">Also include branches where the closing rank was up to this much <strong>below</strong> your rank (slightly tougher cutoffs). Branches with closing rank ≥ your rank — i.e. where you'd get in for sure — are always shown.</div>
+      </div>
+    </div>
+
+    <div class="actions">
+      <div>
+        <button id="toggleShortlistBtn" aria-pressed="false">View Shortlist</button>
+      </div>
+      <div class="count">
+        <span id="resultCount"></span>
+        <button id="downloadBtn" class="secondary">Download filtered CSV</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="table-wrap">
+    <table id="resultsTable">
+      <thead>
+        <tr>
+          <th class="drag-handle-col" id="thDragHandle" hidden aria-label="Reorder"></th>
+          <th class="star-col" aria-label="Shortlist"></th>
+          <th data-key="year">Year <span class="arrow"></span></th>
+          <th data-key="institute">Institute <span class="arrow"></span></th>
+          <th data-key="branch">Branch <span class="arrow"></span></th>
+          <th data-key="duration" class="num">Years <span class="arrow"></span></th>
+          <th data-key="degree" id="thDegree" hidden>Degree <span class="arrow"></span></th>
+          <th data-key="gender" id="thGender">Gender <span class="arrow"></span></th>
+          <th data-key="opening" class="num" id="thOpening" hidden>Opening <span class="arrow"></span></th>
+          <th data-key="closing" class="num">Closing <span class="arrow"></span></th>
+          <th class="comment-col" id="thComment" hidden aria-label="Comment">Comment</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <div class="empty" id="emptyState" hidden>No rows match your filters.</div>
+  </div>
+</main>
+
+<footer>
+  <div class="data-source" id="dataSource">
+    <button id="reloadBtn">Reload 2024.csv &amp; 2025.csv</button>
+    <label class="upload-btn">
+      Or upload CSVs
+      <input id="fileInput" type="file" accept=".csv" multiple hidden>
+    </label>
+    <span class="muted" id="status">Loading…</span>
+    <details class="filehelp">
+      <summary>file:// not working?</summary>
+      <div class="muted" style="margin-top:6px;max-width:520px;">
+        Some browsers block <code>fetch()</code> from <code>file://</code>. If reload fails, either upload the CSVs manually, or run
+        <code>python3 -m http.server</code> in this folder and open <code>http://localhost:8000/orcr.html</code>.
+      </div>
+    </details>
+  </div>
+</footer>
+
+<script>
+const COLUMNS = ["year","institute","program","quota","seatType","gender","opening","closing"];
+const DEFAULT_FILES = ["2024.csv", "2025.csv"];
+const RENDER_CAP = 2000;
+
+const INSTITUTE_GROUPS = {
+  top7: new Set([
+    "IIT Bombay", "IIT Delhi", "IIT Kanpur", "IIT Kharagpur",
+    "IIT Madras", "IIT Guwahati", "IIT Roorkee",
+  ]),
+  newGood: new Set(["IIT Gandhinagar", "IIT Hyderabad"]),
+};
+INSTITUTE_GROUPS.others = null; // filled at runtime once data is loaded
+
+const state = {
+  rows: [],
+  filters: {
+    year: "2025", // "2025" | "2024" | "all" — bypassed when shortlistOnly is on
+    instituteGroups: new Set(["top7", "newGood"]),
+    program: "",
+    quota: new Set(),
+    seatType: new Set(),
+    gender: new Set(),
+    degree: new Set(),
+    myRank: null,
+    rankBuffer: null,
+    shortlistOnly: false,
+  },
+  columns: {
+    opening: false,
+    degree: false,
+    gender: false,
+  },
+  shortlist: [], // ordered list of rowKey strings (priority order)
+  shortlistComments: {}, // rowKey -> comment string
+  sort: { key: "closing", dir: "asc" },
+};
+
+const LS_KEY = "orcr.shortlist.v2";
+
+function loadShortlist() {
+  try {
+    const raw = localStorage.getItem(LS_KEY);
+    if (!raw) { state.shortlist = []; state.shortlistComments = {}; return; }
+    const parsed = JSON.parse(raw);
+    if (Array.isArray(parsed)) {
+      // Legacy format: just an array of keys.
+      state.shortlist = parsed.slice();
+      state.shortlistComments = {};
+    } else if (parsed && typeof parsed === "object") {
+      state.shortlist = Array.isArray(parsed.order) ? parsed.order.slice() : [];
+      state.shortlistComments = parsed.comments && typeof parsed.comments === "object"
+        ? { ...parsed.comments } : {};
+    } else {
+      state.shortlist = []; state.shortlistComments = {};
+    }
+  } catch {
+    state.shortlist = []; state.shortlistComments = {};
+  }
+}
+
+function saveShortlist() {
+  try {
+    localStorage.setItem(LS_KEY, JSON.stringify({
+      order: state.shortlist,
+      comments: state.shortlistComments,
+    }));
+  } catch {}
+}
+
+function rowKey(r) {
+  return `${r.year}||${r.institute}||${r.branch}||${r.duration ?? ""}||${r.degree}`;
+}
+
+function isShortlisted(key) {
+  return state.shortlist.indexOf(key) >= 0;
+}
+
+const $ = (sel) => document.querySelector(sel);
+const $$ = (sel) => Array.from(document.querySelectorAll(sel));
+
+// ----- CSV parsing -----
+function parseCSV(text) {
+  const rows = [];
+  let row = [], field = "", i = 0, inQuotes = false;
+  while (i < text.length) {
+    const c = text[i];
+    if (inQuotes) {
+      if (c === '"') {
+        if (text[i + 1] === '"') { field += '"'; i += 2; continue; }
+        inQuotes = false; i++; continue;
+      }
+      field += c; i++;
+    } else {
+      if (c === '"') { inQuotes = true; i++; continue; }
+      if (c === ',') { row.push(field); field = ""; i++; continue; }
+      if (c === '\n') { row.push(field); rows.push(row); row = []; field = ""; i++; continue; }
+      if (c === '\r') { i++; continue; }
+      field += c; i++;
+    }
+  }
+  if (field.length || row.length) { row.push(field); rows.push(row); }
+  return rows;
+}
+
+function parseRank(val) {
+  if (val == null) return null;
+  const s = String(val).trim();
+  if (!s) return null;
+  const m = s.match(/(\d+)/);
+  return m ? parseInt(m[1], 10) : null;
+}
+
+const PROGRAM_RX = /^(.*) \((\d+)\s+Years?,\s*(.*)\)\s*$/;
+
+function splitLegacyProgram(value) {
+  const m = PROGRAM_RX.exec(value || "");
+  if (!m) return { branch: value || "", duration: "", degree: "" };
+  return { branch: m[1].trim(), duration: m[2].trim(), degree: m[3].trim() };
+}
+
+function csvToRecords(text, year) {
+  const grid = parseCSV(text).filter(r => r.length && r.some(c => c && c.trim() !== ""));
+  if (!grid.length) return [];
+  const header = grid[0].map(h => h.trim().toLowerCase());
+  const findContains = (...needles) => header.findIndex(h => needles.every(n => h.includes(n)));
+  const idx = {
+    institute: header.indexOf("institute"),
+    branch: header.indexOf("branch"),
+    duration: findContains("duration"),
+    degree: findContains("degree"),
+    program: header.findIndex(h => h.includes("program")),
+    quota: header.indexOf("quota"),
+    seatType: findContains("seat", "type"),
+    gender: header.indexOf("gender"),
+    opening: header.findIndex(h => h.startsWith("opening")),
+    closing: header.findIndex(h => h.startsWith("closing")),
+  };
+
+  const records = [];
+  for (let r = 1; r < grid.length; r++) {
+    const cols = grid[r];
+    let branch = "", duration = "", degree = "";
+    if (idx.branch >= 0) {
+      branch = cols[idx.branch] || "";
+      duration = idx.duration >= 0 ? cols[idx.duration] || "" : "";
+      degree = idx.degree >= 0 ? cols[idx.degree] || "" : "";
+    } else if (idx.program >= 0) {
+      const split = splitLegacyProgram(cols[idx.program] || "");
+      branch = split.branch; duration = split.duration; degree = split.degree;
+    }
+    const durationNum = parseInt(duration, 10);
+    const rec = {
+      year: String(year),
+      institute: cols[idx.institute] || "",
+      branch,
+      duration: Number.isFinite(durationNum) ? durationNum : null,
+      degree,
+      quota: idx.quota >= 0 ? cols[idx.quota] || "" : "",
+      seatType: idx.seatType >= 0 ? cols[idx.seatType] || "" : "",
+      gender: idx.gender >= 0 ? cols[idx.gender] || "" : "",
+      openingRaw: idx.opening >= 0 ? cols[idx.opening] || "" : "",
+      closingRaw: idx.closing >= 0 ? cols[idx.closing] || "" : "",
+    };
+    rec.opening = parseRank(rec.openingRaw);
+    rec.closing = parseRank(rec.closingRaw);
+    if (!rec.institute && rec.opening == null && rec.closing == null) continue;
+    records.push(rec);
+  }
+  return records;
+}
+
+function inferYearFromName(name) {
+  const m = name.match(/(20\d{2})/);
+  return m ? m[1] : name.replace(/\.csv$/i, "");
+}
+
+// ----- Data loading -----
+async function loadDefault() {
+  setStatus("Loading 2024.csv & 2025.csv…");
+  try {
+    const fetched = await Promise.all(DEFAULT_FILES.map(async (name) => {
+      const res = await fetch(name, { cache: "no-store" });
+      if (!res.ok) throw new Error(name + " " + res.status);
+      const text = await res.text();
+      return csvToRecords(text, inferYearFromName(name));
+    }));
+    state.rows = fetched.flat();
+    onDataLoaded(DEFAULT_FILES);
+  } catch (err) {
+    setStatus(`Couldn't load default CSVs (${err.message}). Upload them manually below.`, true);
+  }
+}
+
+function refreshOthersGroup() {
+  const known = new Set([...INSTITUTE_GROUPS.top7, ...INSTITUTE_GROUPS.newGood]);
+  const others = new Set();
+  for (const r of state.rows) {
+    if (r.institute && !known.has(r.institute)) others.add(r.institute);
+  }
+  INSTITUTE_GROUPS.others = others;
+}
+
+function onDataLoaded(sourceLabels) {
+  setStatus(`Loaded ${state.rows.length.toLocaleString()} rows from ${sourceLabels.join(", ")}.`);
+  refreshOthersGroup();
+  buildOptionFilters();
+  render();
+}
+
+async function handleFiles(files) {
+  setStatus("Reading uploaded files…");
+  try {
+    const allRecs = [];
+    for (const file of files) {
+      const text = await file.text();
+      const year = inferYearFromName(file.name);
+      allRecs.push(...csvToRecords(text, year));
+    }
+    state.rows = allRecs;
+    onDataLoaded(Array.from(files).map(f => f.name));
+  } catch (err) {
+    setStatus("Failed to read files: " + err.message, true);
+  }
+}
+
+function setStatus(text, isError = false) {
+  const el = $("#status");
+  el.textContent = text;
+  el.classList.toggle("error", !!isError);
+}
+
+// ----- Filter UI -----
+function uniqueSorted(rows, key) {
+  return Array.from(new Set(rows.map(r => r[key]).filter(Boolean))).sort((a, b) => a.localeCompare(b));
+}
+
+const DEFAULT_SELECTIONS = {
+  gender: ["Gender-Neutral"],
+};
+
+function buildOptionFilters() {
+  const groups = [
+    { key: "gender", el: "#filterGender" },
+  ];
+  for (const g of groups) {
+    const values = uniqueSorted(state.rows, g.key);
+    const container = $(g.el);
+    container.innerHTML = "";
+    const defaults = new Set(DEFAULT_SELECTIONS[g.key] || []);
+    const applied = new Set();
+    for (const v of values) {
+      const id = `flt-${g.key}-${v.replace(/[^a-z0-9]/gi, "_")}`;
+      const isDefault = defaults.has(v);
+      if (isDefault) applied.add(v);
+      const label = document.createElement("label");
+      label.innerHTML = `<input type="checkbox" id="${id}" value="${v.replace(/"/g, "&quot;")}"${isDefault ? " checked" : ""}> ${v}`;
+      container.appendChild(label);
+    }
+    state.filters[g.key] = applied;
+    if (!container.dataset.bound) {
+      container.addEventListener("change", () => {
+        const checked = Array.from(container.querySelectorAll("input:checked")).map(i => i.value);
+        state.filters[g.key] = new Set(checked);
+        render();
+      });
+      container.dataset.bound = "1";
+    }
+  }
+}
+
+// ----- Filtering / sorting -----
+function applyFilters() {
+  const f = state.filters;
+  const prog = f.program.toLowerCase();
+  const hasRank = typeof f.myRank === "number" && f.myRank > 0;
+  const hasBuffer = typeof f.rankBuffer === "number" && f.rankBuffer >= 0;
+
+  let allowedInstitutes = null;
+  if (f.instituteGroups && f.instituteGroups.size) {
+    allowedInstitutes = new Set();
+    for (const g of f.instituteGroups) {
+      const set = INSTITUTE_GROUPS[g];
+      if (set) for (const v of set) allowedInstitutes.add(v);
+    }
+  }
+  const gFilter = effectiveGenderFilter();
+
+  return state.rows.filter(r => {
+    if (f.shortlistOnly && !isShortlisted(rowKey(r))) return false;
+    if (!f.shortlistOnly && f.year !== "all" && r.year !== f.year) return false;
+    if (f.quota.size && !f.quota.has(r.quota)) return false;
+    if (f.seatType.size && !f.seatType.has(r.seatType)) return false;
+    if (gFilter.size && !gFilter.has(r.gender)) return false;
+    if (allowedInstitutes && !allowedInstitutes.has(r.institute)) return false;
+    if (prog) {
+      const hay = ((r.branch || "") + " " + (r.degree || "")).toLowerCase();
+      if (!hay.includes(prog)) return false;
+    }
+    if (hasRank) {
+      if (r.closing == null) return false;
+      const lowerBound = hasBuffer ? f.myRank - f.rankBuffer : f.myRank;
+      if (r.closing < lowerBound) return false;
+    }
+    return true;
+  });
+}
+
+function sortRows(rows) {
+  const { key, dir } = state.sort;
+  const sign = dir === "asc" ? 1 : -1;
+  const numericKeys = new Set(["opening", "closing", "margin", "year", "duration"]);
+  const hasRank = typeof state.filters.myRank === "number" && state.filters.myRank > 0;
+
+  return rows.slice().sort((a, b) => {
+    let av, bv;
+    if (key === "margin") {
+      if (!hasRank) return 0;
+      av = a.closing == null ? Infinity : a.closing - state.filters.myRank;
+      bv = b.closing == null ? Infinity : b.closing - state.filters.myRank;
+    } else if (numericKeys.has(key)) {
+      av = a[key]; bv = b[key];
+      if (av == null) av = dir === "asc" ? Infinity : -Infinity;
+      if (bv == null) bv = dir === "asc" ? Infinity : -Infinity;
+    } else {
+      av = a[key] || ""; bv = b[key] || "";
+      return sign * String(av).localeCompare(String(bv));
+    }
+    return sign * (av - bv);
+  });
+}
+
+// ----- Rendering -----
+function fmt(n) {
+  if (n == null || Number.isNaN(n)) return "";
+  return n.toLocaleString("en-IN");
+}
+
+function showGenderColumn() {
+  return !!state.columns.gender;
+}
+
+function effectiveGenderFilter() {
+  // When the Gender column is hidden, lock the filter to Gender-Neutral
+  // so callers don't have to worry about user-set checkbox state.
+  if (state.columns.gender) return state.filters.gender;
+  return new Set(["Gender-Neutral"]);
+}
+
+function showDegreeColumn() {
+  return !!state.columns.degree;
+}
+
+function setShortlistOnly(on) {
+  state.filters.shortlistOnly = !!on;
+  const btn = $("#toggleShortlistBtn");
+  btn.setAttribute("aria-pressed", on ? "true" : "false");
+  btn.textContent = on ? "\u2713 View Shortlist" : "View Shortlist";
+}
+
+function render() {
+  const hasRank = typeof state.filters.myRank === "number" && state.filters.myRank > 0;
+  const isShortlistMode = !!state.filters.shortlistOnly;
+  const showGender = showGenderColumn();
+  $("#thGender").hidden = !showGender;
+  const showDegree = showDegreeColumn();
+  $("#thDegree").hidden = !showDegree;
+  // Always include Opening rank in shortlist mode so users see opening
+  // alongside closing without having to remember to toggle the column.
+  const showOpening = !!state.columns.opening || isShortlistMode;
+  $("#thOpening").hidden = !showOpening;
+
+  const filtered = applyFilters();
+  $("#thDragHandle").hidden = !isShortlistMode;
+  $("#thComment").hidden = !isShortlistMode;
+  const rows = isShortlistMode
+    ? sortByShortlistOrder(filtered)
+    : sortRows(filtered);
+
+  const table = $("#resultsTable");
+  $$("#resultsTable tbody").forEach(tb => tb.remove());
+
+  const slice = rows.slice(0, RENDER_CAP);
+  if (isShortlistMode) {
+    renderShortlistMode(table, slice, { showDegree, showGender, showOpening });
+  } else {
+    renderNormalMode(table, slice, { showDegree, showGender, showOpening });
+  }
+
+  $("#emptyState").hidden = rows.length > 0;
+  const shown = Math.min(rows.length, RENDER_CAP);
+  const truncated = rows.length > RENDER_CAP ? ` (showing first ${RENDER_CAP.toLocaleString()})` : "";
+  const total = state.rows.length;
+  $("#resultCount").textContent =
+    `Showing ${shown.toLocaleString()} of ${rows.length.toLocaleString()} matches${truncated} — total ${total.toLocaleString()} rows loaded.`;
+
+  updateSortArrows();
+}
+
+function sortByShortlistOrder(rows) {
+  // Order by position in state.shortlist; rows whose key isn't in the
+  // shortlist (shouldn't normally happen since applyFilters filtered them
+  // out) sink to the bottom.
+  return rows.slice().sort((a, b) => {
+    const ai = state.shortlist.indexOf(rowKey(a));
+    const bi = state.shortlist.indexOf(rowKey(b));
+    const aa = ai < 0 ? Infinity : ai;
+    const bb = bi < 0 ? Infinity : bi;
+    return aa - bb;
+  });
+}
+
+function rowStarCell(key, starred) {
+  return `<td class="star-col"><button type="button" class="star${starred ? ' on' : ''}" data-key="${escapeHTML(key)}" aria-label="${starred ? 'Remove from shortlist' : 'Add to shortlist'}" title="${starred ? 'Remove from shortlist' : 'Add to shortlist'}">${starred ? '\u2605' : '\u2606'}</button></td>`;
+}
+
+function rowBodyCells(r, { showDegree, showGender, showOpening }) {
+  const cells = [];
+  cells.push(`<td><span class="year-badge year-${r.year}">${r.year}</span></td>`);
+  cells.push(`<td>${escapeHTML(r.institute)}</td>`);
+  cells.push(`<td>${escapeHTML(r.branch)}</td>`);
+  cells.push(`<td class="num">${r.duration == null ? "" : `<span class="duration-badge duration-${r.duration}">${r.duration}</span>`}</td>`);
+  if (showDegree) cells.push(`<td>${escapeHTML(r.degree)}</td>`);
+  if (showGender) cells.push(`<td>${escapeHTML(r.gender)}</td>`);
+  if (showOpening) cells.push(`<td class="num">${fmt(r.opening)}</td>`);
+  cells.push(`<td class="num">${fmt(r.closing)}</td>`);
+  return cells.join("");
+}
+
+function renderNormalMode(table, slice, opts) {
+  const tbody = document.createElement("tbody");
+  const frag = document.createDocumentFragment();
+  for (const r of slice) {
+    const tr = document.createElement("tr");
+    const key = rowKey(r);
+    tr.innerHTML = rowStarCell(key, isShortlisted(key)) + rowBodyCells(r, opts);
+    frag.appendChild(tr);
+  }
+  tbody.appendChild(frag);
+  table.appendChild(tbody);
+}
+
+function renderShortlistMode(table, slice, opts) {
+  const tbody = document.createElement("tbody");
+  const frag = document.createDocumentFragment();
+  for (const r of slice) {
+    const key = rowKey(r);
+    const comment = state.shortlistComments[key] || "";
+    const tr = document.createElement("tr");
+    tr.className = "program-group";
+    tr.draggable = true;
+    tr.dataset.key = key;
+    tr.innerHTML =
+      `<td class="drag-handle" title="Drag to reorder">\u22EE\u22EE</td>` +
+      rowStarCell(key, true) +
+      rowBodyCells(r, opts) +
+      `<td class="comment-cell"><textarea class="comment-input" rows="1" data-key="${escapeHTML(key)}" placeholder="Add a note">${escapeHTML(comment)}</textarea></td>`;
+    frag.appendChild(tr);
+  }
+  tbody.appendChild(frag);
+  table.appendChild(tbody);
+  tbody.querySelectorAll("textarea.comment-input").forEach(autoSizeTextarea);
+}
+
+function autoSizeTextarea(ta) {
+  ta.style.height = "auto";
+  ta.style.height = ta.scrollHeight + "px";
+}
+
+function updateSortArrows() {
+  $$("#resultsTable thead th").forEach(th => {
+    const key = th.dataset.key;
+    const arrow = th.querySelector(".arrow");
+    if (!arrow) return;
+    if (state.sort.key === key) arrow.textContent = state.sort.dir === "asc" ? "▲" : "▼";
+    else arrow.textContent = "";
+  });
+}
+
+function escapeHTML(s) {
+  return String(s ?? "").replace(/[&<>"']/g, c => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+  }[c]));
+}
+
+// ----- Wire up -----
+function init() {
+  $("#reloadBtn").addEventListener("click", loadDefault);
+  $("#fileInput").addEventListener("change", e => {
+    if (e.target.files.length) handleFiles(e.target.files);
+  });
+  $("#filterInstituteGroup").addEventListener("change", () => {
+    const checked = $$("#filterInstituteGroup input:checked").map(i => i.value);
+    state.filters.instituteGroups = new Set(checked);
+    render();
+  });
+  $("#filterProgram").addEventListener("input", e => {
+    state.filters.program = e.target.value.trim();
+    render();
+  });
+  $("#myRank").addEventListener("input", e => {
+    const v = parseInt(e.target.value, 10);
+    state.filters.myRank = Number.isFinite(v) && v > 0 ? v : null;
+    render();
+  });
+  $("#rankBuffer").addEventListener("input", e => {
+    const v = parseInt(e.target.value, 10);
+    state.filters.rankBuffer = Number.isFinite(v) && v >= 0 ? v : null;
+    render();
+  });
+  $("#toggleOpening").addEventListener("change", e => {
+    state.columns.opening = e.target.checked;
+    render();
+  });
+  $("#toggleDegree").addEventListener("change", e => {
+    state.columns.degree = e.target.checked;
+    render();
+  });
+  $("#toggleGender").addEventListener("change", e => {
+    state.columns.gender = e.target.checked;
+    $("#genderFilterBlock").hidden = !e.target.checked;
+    render();
+  });
+  $("#toggleShortlistBtn").addEventListener("click", () => {
+    setShortlistOnly(!state.filters.shortlistOnly);
+    render();
+  });
+  $("#filterYear").addEventListener("change", e => {
+    state.filters.year = e.target.value;
+    render();
+  });
+  $("#resetBtn").addEventListener("click", () => {
+    // Note: state.shortlist (and its localStorage entry) is intentionally NOT
+    // cleared here — Reset only resets filters/columns. Use the "Clear" link
+    // next to the shortlist counter to nuke the shortlist itself.
+    state.filters = {
+      year: "2025", instituteGroups: new Set(["top7", "newGood"]), program: "",
+      quota: new Set(), seatType: new Set(), gender: new Set(),
+      myRank: null, rankBuffer: null,
+      shortlistOnly: false,
+    };
+    state.columns = { opening: false, degree: false, gender: false };
+    $("#filterProgram").value = "";
+    $("#myRank").value = "";
+    $("#rankBuffer").value = "";
+    $("#filterYear").value = "2025";
+    $("#toggleOpening").checked = false;
+    $("#toggleDegree").checked = false;
+    $("#toggleGender").checked = false;
+    setShortlistOnly(false);
+    $("#genderFilterBlock").hidden = true;
+    $$("#filterInstituteGroup input").forEach(cb => { cb.checked = cb.value === "top7" || cb.value === "newGood"; });
+    buildOptionFilters();
+    state.sort = { key: "closing", dir: "asc" };
+    render();
+  });
+  $("#downloadBtn").addEventListener("click", () => {
+    const rows = sortRows(applyFilters());
+    const hasRank = typeof state.filters.myRank === "number" && state.filters.myRank > 0;
+    const showGender = showGenderColumn();
+    const showDegree = showDegreeColumn();
+    const showOpening = !!state.columns.opening || !!state.filters.shortlistOnly;
+    const headers = ["Year","Institute","Branch","Duration (Years)"];
+    if (showDegree) headers.push("Degree Title");
+    if (showGender) headers.push("Gender");
+    if (showOpening) headers.push("Opening Rank");
+    headers.push("Closing Rank");
+    if (hasRank) headers.push("Margin");
+    const lines = [headers.join(",")];
+    for (const r of rows) {
+      const margin = hasRank && r.closing != null ? r.closing - state.filters.myRank : "";
+      const cells = [r.year, r.institute, r.branch, r.duration ?? ""];
+      if (showDegree) cells.push(r.degree);
+      if (showGender) cells.push(r.gender);
+      if (showOpening) cells.push(r.opening ?? "");
+      cells.push(r.closing ?? "");
+      if (hasRank) cells.push(margin);
+      lines.push(cells.map(csvField).join(","));
+    }
+    const blob = new Blob([lines.join("\n")], { type: "text/csv" });
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(blob);
+    a.download = "orcr_filtered.csv";
+    a.click();
+    URL.revokeObjectURL(a.href);
+  });
+  $$("#resultsTable thead th").forEach(th => {
+    th.addEventListener("click", () => {
+      const key = th.dataset.key;
+      if (!key) return;
+      if (state.sort.key === key) state.sort.dir = state.sort.dir === "asc" ? "desc" : "asc";
+      else state.sort = { key, dir: key === "opening" || key === "closing" || key === "margin" ? "asc" : "asc" };
+      render();
+    });
+  });
+  $("#resultsTable").addEventListener("click", e => {
+    const btn = e.target.closest("button.star");
+    if (!btn) return;
+    const key = btn.dataset.key;
+    if (!key) return;
+    const idx = state.shortlist.indexOf(key);
+    if (idx >= 0) {
+      state.shortlist.splice(idx, 1);
+      delete state.shortlistComments[key];
+    } else {
+      state.shortlist.push(key);
+    }
+    saveShortlist();
+    render();
+  });
+
+  // Shortlist mode: drag-and-drop reordering on tr.program-group.
+  // The native dragstart event's target is the draggable element (the tr),
+  // not the cell the user pressed on, so we have to record on mousedown
+  // whether the press started on the drag handle and gate the drag on that.
+  let dragSrcKey = null;
+  let dragAllowed = false;
+  $("#resultsTable").addEventListener("mousedown", e => {
+    dragAllowed = !!e.target.closest("td.drag-handle");
+  });
+  $("#resultsTable").addEventListener("dragstart", e => {
+    const tr = e.target.closest("tr.program-group");
+    if (!tr || !dragAllowed) { e.preventDefault(); return; }
+    dragSrcKey = tr.dataset.key;
+    tr.classList.add("dragging");
+    if (e.dataTransfer) {
+      e.dataTransfer.effectAllowed = "move";
+      try { e.dataTransfer.setData("text/plain", dragSrcKey); } catch {}
+    }
+  });
+  $("#resultsTable").addEventListener("dragover", e => {
+    if (!dragSrcKey) return;
+    const tr = e.target.closest("tr.program-group");
+    if (!tr || tr.dataset.key === dragSrcKey) return;
+    e.preventDefault();
+    if (e.dataTransfer) e.dataTransfer.dropEffect = "move";
+    $$("#resultsTable tr.program-group.drop-target").forEach(el => el.classList.remove("drop-target"));
+    tr.classList.add("drop-target");
+  });
+  $("#resultsTable").addEventListener("drop", e => {
+    if (!dragSrcKey) return;
+    const tr = e.target.closest("tr.program-group");
+    if (!tr || tr.dataset.key === dragSrcKey) return;
+    e.preventDefault();
+    const targetKey = tr.dataset.key;
+    const srcIdx = state.shortlist.indexOf(dragSrcKey);
+    if (srcIdx < 0) return;
+    state.shortlist.splice(srcIdx, 1);
+    let dstIdx = state.shortlist.indexOf(targetKey);
+    if (dstIdx < 0) dstIdx = state.shortlist.length;
+    state.shortlist.splice(dstIdx, 0, dragSrcKey);
+    saveShortlist();
+    render();
+  });
+  $("#resultsTable").addEventListener("dragend", () => {
+    $$("#resultsTable tr.program-group.dragging").forEach(el => el.classList.remove("dragging"));
+    $$("#resultsTable tr.program-group.drop-target").forEach(el => el.classList.remove("drop-target"));
+    dragSrcKey = null;
+    dragAllowed = false;
+  });
+
+  // Shortlist mode: per-row comment input.
+  $("#resultsTable").addEventListener("input", e => {
+    const ta = e.target.closest("textarea.comment-input");
+    if (!ta) return;
+    autoSizeTextarea(ta);
+  });
+  $("#resultsTable").addEventListener("change", e => {
+    const input = e.target.closest(".comment-input");
+    if (!input) return;
+    const key = input.dataset.key;
+    if (!key) return;
+    const v = input.value.trim();
+    if (v) state.shortlistComments[key] = v;
+    else delete state.shortlistComments[key];
+    saveShortlist();
+  });
+
+  function csvField(v) {
+    const s = String(v ?? "");
+    return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+  }
+
+  loadShortlist();
+  loadDefault();
+}
+
+init();
+</script>
+</body>
+</html>

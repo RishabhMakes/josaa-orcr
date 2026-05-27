@@ -1,0 +1,591 @@
+Institute,Branch,Duration (Years),Degree Title,Quota,Seat Type,Gender,Opening Rank,Closing Rank
+IIT Bhubaneswar,Civil Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,9106,14782
+IIT Bhubaneswar,Civil Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),18286,23024
+IIT Bhubaneswar,Computer Science and Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,2389,3685
+IIT Bhubaneswar,Computer Science and Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),4833,7557
+IIT Bhubaneswar,Electrical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,5381,7661
+IIT Bhubaneswar,Electrical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),12140,14183
+IIT Bhubaneswar,Electronics and Communication Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,3944,5157
+IIT Bhubaneswar,Electronics and Communication Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),8798,10904
+IIT Bhubaneswar,Engineering Physics,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,10756,11307
+IIT Bhubaneswar,Engineering Physics,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),18825,18825
+IIT Bhubaneswar,Mechanical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,7881,10233
+IIT Bhubaneswar,Mechanical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),16104,19505
+IIT Bhubaneswar,Metallurgical and Materials Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,11823,14898
+IIT Bhubaneswar,Metallurgical and Materials Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),20901,21693
+IIT Bombay,Aerospace Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,817,2394
+IIT Bombay,Aerospace Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),2494,6360
+IIT Bombay,BS in Mathematics,4,Bachelor of Science,AI,OPEN,Gender-Neutral,631,1191
+IIT Bombay,BS in Mathematics,4,Bachelor of Science,AI,OPEN,Female-only (including Supernumerary),4101,4101
+IIT Bombay,Chemical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,650,2545
+IIT Bombay,Chemical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),4559,6650
+IIT Bombay,Chemistry,4,Bachelor of Science,AI,OPEN,Gender-Neutral,5629,7430
+IIT Bombay,Chemistry,4,Bachelor of Science,AI,OPEN,Female-only (including Supernumerary),9692,11262
+IIT Bombay,Civil Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,2244,4046
+IIT Bombay,Civil Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),6334,8833
+IIT Bombay,Computer Science and Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,1,68
+IIT Bombay,Computer Science and Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),7,421
+IIT Bombay,Economics,4,Bachelor of Science,AI,OPEN,Gender-Neutral,1562,2408
+IIT Bombay,Economics,4,Bachelor of Science,AI,OPEN,Female-only (including Supernumerary),3878,4408
+IIT Bombay,Electrical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,15,496
+IIT Bombay,Electrical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),642,1339
+IIT Bombay,Electrical Engineering,5,Bachelor and Master of Technology (Dual Degree),AI,OPEN,Gender-Neutral,536,973
+IIT Bombay,Electrical Engineering,5,Bachelor and Master of Technology (Dual Degree),AI,OPEN,Female-only (including Supernumerary),1731,2424
+IIT Bombay,Energy Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,1905,2689
+IIT Bombay,Energy Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),3767,5537
+IIT Bombay,Engineering Physics,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,197,1719
+IIT Bombay,Engineering Physics,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),1680,3629
+IIT Bombay,Environmental Science and Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,3424,4718
+IIT Bombay,Environmental Science and Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),8821,9292
+IIT Bombay,Industrial Engineering and Operations Research,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,1042,1726
+IIT Bombay,Industrial Engineering and Operations Research,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),3258,4762
+IIT Bombay,Mechanical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,666,1685
+IIT Bombay,Mechanical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),1662,4444
+IIT Bombay,Metallurgical Engineering and Materials Science,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,2690,4193
+IIT Bombay,Metallurgical Engineering and Materials Science,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),6870,8491
+IIT Mandi,B.Tech in General Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,7482,10842
+IIT Mandi,B.Tech in General Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),14742,18004
+IIT Mandi,B.Tech in Materials Science and Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,12859,14440
+IIT Mandi,B.Tech in Materials Science and Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),21058,23252
+IIT Mandi,B.Tech in Mathematics and Computing,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,3634,4089
+IIT Mandi,B.Tech in Mathematics and Computing,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),7453,7886
+IIT Mandi,B.Tech in Microelectronics & VLSI,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,4694,6643
+IIT Mandi,B.Tech in Microelectronics & VLSI,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),11035,12194
+IIT Mandi,Bio Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,11233,14239
+IIT Mandi,Bio Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),20007,21077
+IIT Mandi,BS in Chemical Sciences,4,Bachelor of Science,AI,OPEN,Gender-Neutral,12900,16430
+IIT Mandi,BS in Chemical Sciences,4,Bachelor of Science,AI,OPEN,Female-only (including Supernumerary),23662,23698
+IIT Mandi,Civil Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,9968,12562
+IIT Mandi,Civil Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),20688,22150
+IIT Mandi,Computer Science and Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,1803,3118
+IIT Mandi,Computer Science and Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),6049,6725
+IIT Mandi,Data Science and Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,3222,3918
+IIT Mandi,Data Science and Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),7110,9188
+IIT Mandi,Electrical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,4772,6909
+IIT Mandi,Electrical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),11796,12842
+IIT Mandi,Engineering Physics,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,9089,10475
+IIT Mandi,Engineering Physics,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),19986,20153
+IIT Mandi,Mechanical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,6947,9734
+IIT Mandi,Mechanical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),18047,19060
+IIT Delhi,Biotechnology and Biochemical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,3677,4849
+IIT Delhi,Biotechnology and Biochemical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),8216,9733
+IIT Delhi,Chemical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,1689,2221
+IIT Delhi,Chemical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),3550,5060
+IIT Delhi,Chemical Engineering,5,Bachelor and Master of Technology (Dual Degree),AI,OPEN,Gender-Neutral,2629,3646
+IIT Delhi,Chemical Engineering,5,Bachelor and Master of Technology (Dual Degree),AI,OPEN,Female-only (including Supernumerary),6656,6847
+IIT Delhi,Civil Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,2666,4169
+IIT Delhi,Civil Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),6862,9424
+IIT Delhi,Computer Science and Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,27,116
+IIT Delhi,Computer Science and Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),39,556
+IIT Delhi,Computer Science and Engineering,5,Bachelor and Master of Technology (Dual Degree),AI,OPEN,Gender-Neutral,128,204
+IIT Delhi,Computer Science and Engineering,5,Bachelor and Master of Technology (Dual Degree),AI,OPEN,Female-only (including Supernumerary),958,1061
+IIT Delhi,Electrical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,382,625
+IIT Delhi,Electrical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),1411,1826
+IIT Delhi,Electrical Engineering (Power and Automation),4,Bachelor of Technology,AI,OPEN,Gender-Neutral,646,810
+IIT Delhi,Electrical Engineering (Power and Automation),4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),2019,2462
+IIT Delhi,Energy Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,1898,2707
+IIT Delhi,Energy Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),5632,6523
+IIT Delhi,Engineering and Computational Mechanics,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,890,1194
+IIT Delhi,Engineering and Computational Mechanics,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),2128,3381
+IIT Delhi,Engineering Physics,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,1845,2560
+IIT Delhi,Engineering Physics,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),4087,7030
+IIT Delhi,Materials Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,2422,3797
+IIT Delhi,Materials Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),8280,9743
+IIT Delhi,Mathematics and Computing,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,118,332
+IIT Delhi,Mathematics and Computing,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),824,1240
+IIT Delhi,Mathematics and Computing,5,Bachelor and Master of Technology (Dual Degree),AI,OPEN,Gender-Neutral,339,417
+IIT Delhi,Mathematics and Computing,5,Bachelor and Master of Technology (Dual Degree),AI,OPEN,Female-only (including Supernumerary),1433,1644
+IIT Delhi,Mechanical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,1225,1782
+IIT Delhi,Mechanical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),3748,5487
+IIT Delhi,Production and Industrial Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,2452,3089
+IIT Delhi,Production and Industrial Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),7335,9018
+IIT Delhi,Textile Technology,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,4352,6102
+IIT Delhi,Textile Technology,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),9820,12551
+IIT Indore,Chemical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,7109,7913
+IIT Indore,Chemical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),15679,16378
+IIT Indore,Civil Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,8296,9773
+IIT Indore,Civil Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),16460,18217
+IIT Indore,Computer Science and Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,823,1389
+IIT Indore,Computer Science and Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),3499,4698
+IIT Indore,Electrical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,2359,3818
+IIT Indore,Electrical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),5167,8297
+IIT Indore,Engineering Physics,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,5765,7612
+IIT Indore,Engineering Physics,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),13790,15115
+IIT Indore,Mathematics and Computing,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,1591,2180
+IIT Indore,Mathematics and Computing,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),4905,5064
+IIT Indore,Mechanical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,4946,6812
+IIT Indore,Mechanical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),12137,14123
+IIT Indore,Metallurgical Engineering and Materials Science,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,8299,10894
+IIT Indore,Metallurgical Engineering and Materials Science,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),18413,19770
+IIT Indore,Space Sciences and Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,5666,6640
+IIT Indore,Space Sciences and Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),10683,10970
+IIT Kharagpur,Aerospace Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,2716,4745
+IIT Kharagpur,Aerospace Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),10505,11444
+IIT Kharagpur,Agricultural and Food Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,5515,10770
+IIT Kharagpur,Agricultural and Food Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),15669,19903
+IIT Kharagpur,Applied Geology,4,Bachelor of Science,AI,OPEN,Gender-Neutral,10069,12893
+IIT Kharagpur,Applied Geology,4,Bachelor of Science,AI,OPEN,Female-only (including Supernumerary),20374,22024
+IIT Kharagpur,Architecture,5,Bachelor of Architecture,AI,OPEN,Gender-Neutral,16634,20427
+IIT Kharagpur,Architecture,5,Bachelor of Architecture,AI,OPEN,Female-only (including Supernumerary),20942,24653
+IIT Kharagpur,Artificial Intelligence,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,467,898
+IIT Kharagpur,Artificial Intelligence,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),2604,2630
+IIT Kharagpur,Biotechnology and Biochemical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,5505,7972
+IIT Kharagpur,Biotechnology and Biochemical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),14147,15493
+IIT Kharagpur,Chemical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,3905,4848
+IIT Kharagpur,Chemical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),8646,11646
+IIT Kharagpur,Chemistry,4,Bachelor of Science,AI,OPEN,Gender-Neutral,7869,12488
+IIT Kharagpur,Chemistry,4,Bachelor of Science,AI,OPEN,Female-only (including Supernumerary),18426,19077
+IIT Kharagpur,Civil Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,4902,6992
+IIT Kharagpur,Civil Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),12769,15388
+IIT Kharagpur,Computer Science and Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,226,415
+IIT Kharagpur,Computer Science and Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),1172,1661
+IIT Kharagpur,Economics,4,Bachelor of Science,AI,OPEN,Gender-Neutral,3176,5263
+IIT Kharagpur,Economics,4,Bachelor of Science,AI,OPEN,Female-only (including Supernumerary),6763,10746
+IIT Kharagpur,Electrical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,1460,2016
+IIT Kharagpur,Electrical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),4312,5599
+IIT Kharagpur,Electronics and Electrical Communication Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,516,1448
+IIT Kharagpur,Electronics and Electrical Communication Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),1815,3816
+IIT Kharagpur,Exploration Geophysics,4,Bachelor of Science,AI,OPEN,Gender-Neutral,9996,12413
+IIT Kharagpur,Exploration Geophysics,4,Bachelor of Science,AI,OPEN,Female-only (including Supernumerary),19316,20680
+IIT Kharagpur,Industrial and Systems Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,2915,4364
+IIT Kharagpur,Industrial and Systems Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),7214,10726
+IIT Kharagpur,Instrumentation Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,2022,2481
+IIT Kharagpur,Instrumentation Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),6373,6582
+IIT Kharagpur,Manufacturing Science and Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,4649,6067
+IIT Kharagpur,Manufacturing Science and Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),12350,12933
+IIT Kharagpur,Mathematics and Computing,4,Bachelor of Science,AI,OPEN,Gender-Neutral,971,1329
+IIT Kharagpur,Mathematics and Computing,4,Bachelor of Science,AI,OPEN,Female-only (including Supernumerary),3514,3957
+IIT Kharagpur,Mechanical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,2160,3613
+IIT Kharagpur,Mechanical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),6783,10732
+IIT Kharagpur,Metallurgical and Materials Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,5472,7104
+IIT Kharagpur,Metallurgical and Materials Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),12914,15082
+IIT Kharagpur,Mining Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,7431,10218
+IIT Kharagpur,Mining Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),16126,19143
+IIT Kharagpur,Ocean Engineering and Naval Architecture,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,7876,9098
+IIT Kharagpur,Ocean Engineering and Naval Architecture,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),16598,17790
+IIT Kharagpur,Physics,4,Bachelor of Science,AI,OPEN,Gender-Neutral,2957,9672
+IIT Kharagpur,Physics,4,Bachelor of Science,AI,OPEN,Female-only (including Supernumerary),14639,17600
+IIT Hyderabad,Artificial Intelligence,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,685,875
+IIT Hyderabad,Artificial Intelligence,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),2214,2840
+IIT Hyderabad,Biomedical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,6579,8493
+IIT Hyderabad,Biomedical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),15656,15954
+IIT Hyderabad,Biotechnology and Bioinformatics,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,6015,8524
+IIT Hyderabad,Biotechnology and Bioinformatics,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),14833,15214
+IIT Hyderabad,Chemical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,4229,5757
+IIT Hyderabad,Chemical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),10591,11897
+IIT Hyderabad,Civil Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,7053,7898
+IIT Hyderabad,Civil Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),12882,16049
+IIT Hyderabad,Computational Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,1046,1790
+IIT Hyderabad,Computational Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),4462,5158
+IIT Hyderabad,Computer Science and Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,431,656
+IIT Hyderabad,Computer Science and Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),1709,1809
+IIT Hyderabad,Electrical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,1022,2105
+IIT Hyderabad,Electrical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),3084,4344
+IIT Hyderabad,Electrical Engineering (IC Design and Technology),4,Bachelor of Technology,AI,OPEN,Gender-Neutral,1570,2147
+IIT Hyderabad,Electrical Engineering (IC Design and Technology),4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),4056,4434
+IIT Hyderabad,Engineering Physics,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,3442,4932
+IIT Hyderabad,Engineering Physics,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),11250,12055
+IIT Hyderabad,Engineering Science,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,1822,3835
+IIT Hyderabad,Engineering Science,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),4470,5748
+IIT Hyderabad,Industrial Chemistry,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,8178,9551
+IIT Hyderabad,Industrial Chemistry,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),15890,16446
+IIT Hyderabad,Materials Science and Metallurgical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,5105,8197
+IIT Hyderabad,Materials Science and Metallurgical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),13015,15999
+IIT Hyderabad,Mathematics and Computing,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,660,982
+IIT Hyderabad,Mathematics and Computing,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),2885,3625
+IIT Hyderabad,Mechanical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,3751,4469
+IIT Hyderabad,Mechanical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),7527,10758
+IIT Jodhpur,Artificial Intelligence and Data Science,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,3048,4182
+IIT Jodhpur,Artificial Intelligence and Data Science,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),7749,8194
+IIT Jodhpur,Bio Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,12293,14666
+IIT Jodhpur,Bio Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),18682,20850
+IIT Jodhpur,Chemical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,8295,11036
+IIT Jodhpur,Chemical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),15996,19661
+IIT Jodhpur,Chemistry with Specialization,4,Bachelor of Science,AI,OPEN,Gender-Neutral,12654,16381
+IIT Jodhpur,Chemistry with Specialization,4,Bachelor of Science,AI,OPEN,Female-only (including Supernumerary),22452,23748
+IIT Jodhpur,Civil and Infrastructure Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,11244,13316
+IIT Jodhpur,Civil and Infrastructure Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),19028,21003
+IIT Jodhpur,Computer Science and Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,2062,3061
+IIT Jodhpur,Computer Science and Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),5655,7457
+IIT Jodhpur,Electrical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,4693,6346
+IIT Jodhpur,Electrical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),9003,11925
+IIT Jodhpur,Materials Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,11381,13339
+IIT Jodhpur,Materials Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),19921,22782
+IIT Jodhpur,Mechanical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,6984,9488
+IIT Jodhpur,Mechanical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),14797,18249
+IIT Jodhpur,Physics with Specialization,4,Bachelor of Science,AI,OPEN,Gender-Neutral,10714,14641
+IIT Jodhpur,Physics with Specialization,4,Bachelor of Science,AI,OPEN,Female-only (including Supernumerary),23402,23673
+IIT Kanpur,Aerospace Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,2713,3638
+IIT Kanpur,Aerospace Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),6950,10186
+IIT Kanpur,Biological Sciences and Bioengineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,5259,6952
+IIT Kanpur,Biological Sciences and Bioengineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),10725,12032
+IIT Kanpur,Chemical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,2227,4015
+IIT Kanpur,Chemical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),7129,9528
+IIT Kanpur,Chemistry,4,Bachelor of Science,AI,OPEN,Gender-Neutral,7317,10498
+IIT Kanpur,Chemistry,4,Bachelor of Science,AI,OPEN,Female-only (including Supernumerary),15079,16196
+IIT Kanpur,Civil Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,4213,5948
+IIT Kanpur,Civil Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),4232,13819
+IIT Kanpur,Computer Science and Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,120,252
+IIT Kanpur,Computer Science and Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),781,1117
+IIT Kanpur,Earth Sciences,4,Bachelor of Science,AI,OPEN,Gender-Neutral,7210,10058
+IIT Kanpur,Earth Sciences,4,Bachelor of Science,AI,OPEN,Female-only (including Supernumerary),16346,17618
+IIT Kanpur,Economics,4,Bachelor of Science,AI,OPEN,Gender-Neutral,2137,3106
+IIT Kanpur,Economics,4,Bachelor of Science,AI,OPEN,Female-only (including Supernumerary),5790,6326
+IIT Kanpur,Electrical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,743,1290
+IIT Kanpur,Electrical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),2616,3166
+IIT Kanpur,Materials Science and Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,4831,6008
+IIT Kanpur,Materials Science and Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),11438,13464
+IIT Kanpur,Mathematics and Scientific Computing,4,Bachelor of Science,AI,OPEN,Gender-Neutral,756,990
+IIT Kanpur,Mathematics and Scientific Computing,4,Bachelor of Science,AI,OPEN,Female-only (including Supernumerary),2288,3445
+IIT Kanpur,Mechanical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,1889,2776
+IIT Kanpur,Mechanical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),6470,8298
+IIT Kanpur,Physics,4,Bachelor of Science,AI,OPEN,Gender-Neutral,3377,5508
+IIT Kanpur,Physics,4,Bachelor of Science,AI,OPEN,Female-only (including Supernumerary),7470,16084
+IIT Kanpur,Statistics and Data Science,4,Bachelor of Science,AI,OPEN,Gender-Neutral,699,1030
+IIT Kanpur,Statistics and Data Science,4,Bachelor of Science,AI,OPEN,Female-only (including Supernumerary),1938,3674
+IIT Madras,Aerospace Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,1469,2815
+IIT Madras,Aerospace Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),5475,6845
+IIT Madras,Aerospace Engineering,5,Bachelor and Master of Technology (Dual Degree),AI,OPEN,Gender-Neutral,2199,2984
+IIT Madras,Aerospace Engineering,5,Bachelor and Master of Technology (Dual Degree),AI,OPEN,Female-only (including Supernumerary),2184,2184
+IIT Madras,Artificial Intelligence and Data Analytics,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,132,419
+IIT Madras,Artificial Intelligence and Data Analytics,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),1079,1379
+IIT Madras,Biological Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,3135,5755
+IIT Madras,Biological Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),5326,9871
+IIT Madras,Biological Science,4,Bachelor of Science,AI,OPEN,Gender-Neutral,8849,10682
+IIT Madras,Biological Science,4,Bachelor of Science,AI,OPEN,Female-only (including Supernumerary),12473,14739
+IIT Madras,Chemical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,2024,3972
+IIT Madras,Chemical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),6727,9068
+IIT Madras,Civil Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,3305,5688
+IIT Madras,Civil Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),7794,12586
+IIT Madras,Computer Science and Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,76,159
+IIT Madras,Computer Science and Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),558,757
+IIT Madras,Electrical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,299,838
+IIT Madras,Electrical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),1304,2677
+IIT Madras,Engineering Design,5,Bachelor and Master of Technology (Dual Degree),AI,OPEN,Gender-Neutral,1828,3656
+IIT Madras,Engineering Design,5,Bachelor and Master of Technology (Dual Degree),AI,OPEN,Female-only (including Supernumerary),6825,8939
+IIT Madras,Engineering Physics,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,931,1858
+IIT Madras,Engineering Physics,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),3376,4636
+IIT Madras,Mechanical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,458,2310
+IIT Madras,Mechanical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),2868,6678
+IIT Madras,Metallurgical and Materials Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,3770,4748
+IIT Madras,Metallurgical and Materials Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),9735,10699
+IIT Madras,Naval Architecture and Ocean Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,4274,7404
+IIT Madras,Naval Architecture and Ocean Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),12471,13618
+IIT Madras,Physics,5,Bachelor of Science and Master of Science (Dual Degree),AI,OPEN,Gender-Neutral,1292,2742
+IIT Madras,Physics,5,Bachelor of Science and Master of Science (Dual Degree),AI,OPEN,Female-only (including Supernumerary),7069,7069
+IIT Gandhinagar,Artificial Intelligence,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,1804,2309
+IIT Gandhinagar,Artificial Intelligence,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),4703,4824
+IIT Gandhinagar,Chemical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,6353,8269
+IIT Gandhinagar,Chemical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),14225,15791
+IIT Gandhinagar,Civil Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,8338,10234
+IIT Gandhinagar,Civil Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),16078,17839
+IIT Gandhinagar,Computer Science and Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,811,1708
+IIT Gandhinagar,Computer Science and Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),2427,4592
+IIT Gandhinagar,Computer Science and Engineering,5,Bachelor and Master of Technology (Dual Degree),AI,OPEN,Gender-Neutral,1836,2234
+IIT Gandhinagar,Computer Science and Engineering,5,Bachelor and Master of Technology (Dual Degree),AI,OPEN,Female-only (including Supernumerary),5172,5172
+IIT Gandhinagar,Electrical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,2835,4055
+IIT Gandhinagar,Electrical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),6395,8494
+IIT Gandhinagar,Electrical Engineering,5,Bachelor and Master of Technology (Dual Degree),AI,OPEN,Gender-Neutral,3932,4588
+IIT Gandhinagar,Electrical Engineering,5,Bachelor and Master of Technology (Dual Degree),AI,OPEN,Female-only (including Supernumerary),8611,8611
+IIT Gandhinagar,Integrated Circuit Design & Technology,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,2458,4349
+IIT Gandhinagar,Integrated Circuit Design & Technology,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),7247,7281
+IIT Gandhinagar,Materials Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,8632,11298
+IIT Gandhinagar,Materials Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),16409,17233
+IIT Gandhinagar,Mechanical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,4859,6344
+IIT Gandhinagar,Mechanical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),10210,13488
+IIT Gandhinagar,Mechanical Engineering,5,Bachelor and Master of Technology (Dual Degree),AI,OPEN,Gender-Neutral,6581,7422
+IIT Gandhinagar,Mechanical Engineering,5,Bachelor and Master of Technology (Dual Degree),AI,OPEN,Female-only (including Supernumerary),13636,14114
+IIT Patna,Artificial Intelligence and Data Science,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,3557,4346
+IIT Patna,Artificial Intelligence and Data Science,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),6711,9272
+IIT Patna,B. Tech in CE. - M. Tech. in Geotechnical Engineering,5,B.Tech. + M.Tech./MS (Dual Degree),AI,OPEN,Gender-Neutral,14906,15274
+IIT Patna,B. Tech in CE. - M. Tech. in Geotechnical Engineering,5,B.Tech. + M.Tech./MS (Dual Degree),AI,OPEN,Female-only (including Supernumerary),24612,24612
+IIT Patna,B. Tech in CE. - M. Tech. in Structural Engineering,5,B.Tech. + M.Tech./MS (Dual Degree),AI,OPEN,Gender-Neutral,13323,14055
+IIT Patna,B. Tech in CE. - M. Tech. in Structural Engineering,5,B.Tech. + M.Tech./MS (Dual Degree),AI,OPEN,Female-only (including Supernumerary),18498,18498
+IIT Patna,B. Tech. (CSE) and M.Tech in CSE,5,B.Tech. + M.Tech./MS (Dual Degree),AI,OPEN,Gender-Neutral,3466,4429
+IIT Patna,B. Tech. (CSE) and M.Tech in CSE,5,B.Tech. + M.Tech./MS (Dual Degree),AI,OPEN,Female-only (including Supernumerary),9776,9776
+IIT Patna,B. Tech. (ECE) -M. Tech. in VLSI,5,B.Tech. + M.Tech./MS (Dual Degree),AI,OPEN,Gender-Neutral,6068,6253
+IIT Patna,B. Tech. (ECE) -M. Tech. in VLSI,5,B.Tech. + M.Tech./MS (Dual Degree),AI,OPEN,Female-only (including Supernumerary),14138,14138
+IIT Patna,B. Tech. (EEE)-M. Tech. in (Power &. Control),5,B.Tech. + M.Tech./MS (Dual Degree),AI,OPEN,Gender-Neutral,7254,7605
+IIT Patna,B. Tech. (EEE)-M. Tech. in (Power &. Control),5,B.Tech. + M.Tech./MS (Dual Degree),AI,OPEN,Female-only (including Supernumerary),16498,16498
+IIT Patna,B. Tech. (Mathematics & Computing) M. Tech. in (Mathematics & Computing),5,B.Tech. + M.Tech./MS (Dual Degree),AI,OPEN,Gender-Neutral,5147,5683
+IIT Patna,B. Tech. (Mathematics & Computing) M. Tech. in (Mathematics & Computing),5,B.Tech. + M.Tech./MS (Dual Degree),AI,OPEN,Female-only (including Supernumerary),11004,11004
+IIT Patna,B. Tech. (ME) - M. Tech. in Mechatronics,5,B.Tech. + M.Tech./MS (Dual Degree),AI,OPEN,Gender-Neutral,8327,9835
+IIT Patna,B. Tech. (ME) - M. Tech. in Mechatronics,5,B.Tech. + M.Tech./MS (Dual Degree),AI,OPEN,Female-only (including Supernumerary),18529,18529
+IIT Patna,B.Tech (Artificial Intelligence and Data Science) - MBA in Digital Business Management (IIM Bodh Gaya),5,Bachelor of Technology and MBA (Dual Degree),AI,OPEN,Gender-Neutral,4371,4864
+IIT Patna,B.Tech (Chemical Engineering) - MBA in Hospital and Health Care Management (IIM Bodh Gaya),5,Bachelor of Technology and MBA (Dual Degree),AI,OPEN,Gender-Neutral,12577,13111
+IIT Patna,B.Tech (Chemical Science and Technology) - MBA in Hospital and Health Care Management (IIM Bodh Gaya),5,Bachelor of Technology and MBA (Dual Degree),AI,OPEN,Gender-Neutral,12162,14176
+IIT Patna,B.Tech (Chemical Science and Technology) - MBA in Hospital and Health Care Management (IIM Bodh Gaya),5,Bachelor of Technology and MBA (Dual Degree),AI,OPEN,Female-only (including Supernumerary),20511,20511
+IIT Patna,B.Tech (Civil Engineering) - MBA (IIM Bodh Gaya),5,Bachelor of Technology and MBA (Dual Degree),AI,OPEN,Gender-Neutral,14220,15129
+IIT Patna,B.Tech (Computer Science and Engineering) - MBA in Digital Business Management (IIM Bodh Gaya),5,Bachelor of Technology and MBA (Dual Degree),AI,OPEN,Gender-Neutral,3427,3427
+IIT Patna,B.Tech (Computer Science and Engineering) - MBA in Digital Business Management (IIM Bodh Gaya),5,Bachelor of Technology and MBA (Dual Degree),AI,OPEN,Female-only (including Supernumerary),11166,11166
+IIT Patna,B.Tech (Electrical and Electronics Engineering) - MBA (IIM Bodh Gaya),5,Bachelor of Technology and MBA (Dual Degree),AI,OPEN,Gender-Neutral,5875,7575
+IIT Patna,B.Tech (Electrical and Electronics Engineering) - MBA (IIM Bodh Gaya),5,Bachelor of Technology and MBA (Dual Degree),AI,OPEN,Female-only (including Supernumerary),16808,16808
+IIT Patna,B.Tech (Electronics and Communication Engineering) - MBA in Hospital and Healthcare Management (IIM Bodh Gaya),5,Bachelor of Technology and MBA (Dual Degree),AI,OPEN,Gender-Neutral,6895,7070
+IIT Patna,B.Tech (Electronics and Communication Engineering) - MBA in Hospital and Healthcare Management (IIM Bodh Gaya),5,Bachelor of Technology and MBA (Dual Degree),AI,OPEN,Female-only (including Supernumerary),18135,18135
+IIT Patna,B.Tech (Engineering Physics) - MBA (IIM Bodh Gaya),5,Bachelor of Technology and MBA (Dual Degree),AI,OPEN,Gender-Neutral,10491,12375
+IIT Patna,B.Tech (Mathematics and Computing) - MBA in Digital Business Management (IIM Bodh Gaya),5,Bachelor of Technology and MBA (Dual Degree),AI,OPEN,Gender-Neutral,4990,5445
+IIT Patna,B.Tech (Mechanical Engineering) - MBA (IIM Mumbai),5,Bachelor of Technology and MBA (Dual Degree),AI,OPEN,Gender-Neutral,7840,9445
+IIT Patna,B.Tech (Mechanical Engineering) - MBA (IIM Mumbai),5,Bachelor of Technology and MBA (Dual Degree),AI,OPEN,Female-only (including Supernumerary),14756,19507
+IIT Patna,B.Tech (Metallurgical and Materials Engineering) - MBA (IIM Bodh Gaya),5,Bachelor of Technology and MBA (Dual Degree),AI,OPEN,Gender-Neutral,15433,15438
+IIT Patna,B.Tech (Metallurgical and Materials Engineering) - MBA (IIM Bodh Gaya),5,Bachelor of Technology and MBA (Dual Degree),AI,OPEN,Female-only (including Supernumerary),22211,22211
+IIT Patna,B.Tech. in Electronics and Communication Engineering and M.Tech. in Communication Systems,5,Bachelor and Master of Technology (Dual Degree),AI,OPEN,Gender-Neutral,6287,6660
+IIT Patna,B.Tech. in Electronics and Communication Engineering and M.Tech. in Communication Systems,5,Bachelor and Master of Technology (Dual Degree),AI,OPEN,Female-only (including Supernumerary),12637,12637
+IIT Patna,BS in Economics with MBA (IIM Bodh Gaya),5,Bachelor of Science and MBA (Dual Degree),AI,OPEN,Gender-Neutral,6885,9961
+IIT Patna,Chemical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,10776,12519
+IIT Patna,Chemical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),20166,21996
+IIT Patna,Chemical Science and Technology,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,11793,14062
+IIT Patna,Chemical Science and Technology,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),22292,22410
+IIT Patna,Civil Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,12287,14579
+IIT Patna,Civil Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),22663,23883
+IIT Patna,Computer Science and Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,1760,3144
+IIT Patna,Computer Science and Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),4695,7192
+IIT Patna,Economics,4,Bachelor of Science,AI,OPEN,Gender-Neutral,8762,11437
+IIT Patna,Economics,4,Bachelor of Science,AI,OPEN,Female-only (including Supernumerary),18633,21392
+IIT Patna,Electrical and Electronics Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,5868,6873
+IIT Patna,Electrical and Electronics Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),12395,14153
+IIT Patna,Electronics and Communication Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,4119,5732
+IIT Patna,Electronics and Communication Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),11192,12036
+IIT Patna,Engineering Physics,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,10781,12031
+IIT Patna,Engineering Physics,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),19654,21964
+IIT Patna,Mathematics and Computing,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,3252,4952
+IIT Patna,Mathematics and Computing,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),9830,10651
+IIT Patna,Mechanical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,7745,10647
+IIT Patna,Mechanical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),15112,21121
+IIT Patna,Metallurgical and Materials Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,11553,15323
+IIT Patna,Metallurgical and Materials Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),23452,24442
+IIT Roorkee,Architecture,5,Bachelor of Architecture,AI,OPEN,Gender-Neutral,3105,19885
+IIT Roorkee,Architecture,5,Bachelor of Architecture,AI,OPEN,Female-only (including Supernumerary),17302,19354
+IIT Roorkee,Biosciences and Bioengineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,5871,7286
+IIT Roorkee,Biosciences and Bioengineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),13107,14009
+IIT Roorkee,Chemical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,3531,4689
+IIT Roorkee,Chemical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),6799,10941
+IIT Roorkee,Chemical Sciences,5,Bachelor of Science and Master of Science (Dual Degree),AI,OPEN,Gender-Neutral,8062,11647
+IIT Roorkee,Chemical Sciences,5,Bachelor of Science and Master of Science (Dual Degree),AI,OPEN,Female-only (including Supernumerary),11950,18537
+IIT Roorkee,Civil Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,4202,6293
+IIT Roorkee,Civil Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),10785,14749
+IIT Roorkee,Computer Science and Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,277,481
+IIT Roorkee,Computer Science and Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),1270,1870
+IIT Roorkee,Data Science and Artificial Intelligence,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,503,680
+IIT Roorkee,Data Science and Artificial Intelligence,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),2000,2114
+IIT Roorkee,Economics,5,Bachelor of Science and Master of Science (Dual Degree),AI,OPEN,Gender-Neutral,3233,5312
+IIT Roorkee,Economics,5,Bachelor of Science and Master of Science (Dual Degree),AI,OPEN,Female-only (including Supernumerary),10154,10847
+IIT Roorkee,Electrical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,1495,2033
+IIT Roorkee,Electrical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),3631,6111
+IIT Roorkee,Electronics and Communication Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,987,1424
+IIT Roorkee,Electronics and Communication Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),2653,3590
+IIT Roorkee,Energy Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,3834,4818
+IIT Roorkee,Energy Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),11253,11253
+IIT Roorkee,Engineering Physics,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,2456,3951
+IIT Roorkee,Engineering Physics,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),6739,10019
+IIT Roorkee,Geological Technology,5,Integrated Master of Technology,AI,OPEN,Gender-Neutral,7985,9977
+IIT Roorkee,Geological Technology,5,Integrated Master of Technology,AI,OPEN,Female-only (including Supernumerary),15494,17322
+IIT Roorkee,Geophysical Technology,5,Integrated Master of Technology,AI,OPEN,Gender-Neutral,6436,9210
+IIT Roorkee,Geophysical Technology,5,Integrated Master of Technology,AI,OPEN,Female-only (including Supernumerary),16073,18299
+IIT Roorkee,Mathematics & Computing,5,Bachelor of Science and Master of Science (Dual Degree),AI,OPEN,Gender-Neutral,1089,1512
+IIT Roorkee,Mathematics & Computing,5,Bachelor of Science and Master of Science (Dual Degree),AI,OPEN,Female-only (including Supernumerary),4010,4814
+IIT Roorkee,Mechanical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,2526,3672
+IIT Roorkee,Mechanical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),7668,10517
+IIT Roorkee,Metallurgical and Materials Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,6173,7051
+IIT Roorkee,Metallurgical and Materials Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),13244,15488
+IIT Roorkee,Physics,5,Bachelor of Science and Master of Science (Dual Degree),AI,OPEN,Gender-Neutral,6021,9079
+IIT Roorkee,Physics,5,Bachelor of Science and Master of Science (Dual Degree),AI,OPEN,Female-only (including Supernumerary),12854,15922
+IIT Roorkee,Production and Industrial Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,4457,5365
+IIT Roorkee,Production and Industrial Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),11018,11912
+IIT (ISM) Dhanbad,Applied Geology,5,Integrated Master of Technology,AI,OPEN,Gender-Neutral,13369,16011
+IIT (ISM) Dhanbad,Applied Geology,5,Integrated Master of Technology,AI,OPEN,Female-only (including Supernumerary),24275,24275
+IIT (ISM) Dhanbad,Applied Geophysics,5,Integrated Master of Technology,AI,OPEN,Gender-Neutral,15220,15591
+IIT (ISM) Dhanbad,Applied Geophysics,5,Integrated Master of Technology,AI,OPEN,Female-only (including Supernumerary),25416,25416
+IIT (ISM) Dhanbad,Chemical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,7882,11398
+IIT (ISM) Dhanbad,Chemical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),16313,19432
+IIT (ISM) Dhanbad,Civil Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,9898,12996
+IIT (ISM) Dhanbad,Civil Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),20786,23485
+IIT (ISM) Dhanbad,Computer Science and Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,2167,3846
+IIT (ISM) Dhanbad,Computer Science and Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),5560,8682
+IIT (ISM) Dhanbad,Electrical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,4868,7567
+IIT (ISM) Dhanbad,Electrical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),13093,14711
+IIT (ISM) Dhanbad,Electronics and Communication Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,4743,5982
+IIT (ISM) Dhanbad,Electronics and Communication Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),9327,12788
+IIT (ISM) Dhanbad,Engineering Physics,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,8392,10778
+IIT (ISM) Dhanbad,Engineering Physics,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),16923,17730
+IIT (ISM) Dhanbad,Environmental Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,9606,15291
+IIT (ISM) Dhanbad,Environmental Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),21683,23835
+IIT (ISM) Dhanbad,Mathematics and Computing,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,4100,4956
+IIT (ISM) Dhanbad,Mathematics and Computing,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),9026,10248
+IIT (ISM) Dhanbad,Mechanical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,7675,9875
+IIT (ISM) Dhanbad,Mechanical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),16262,19099
+IIT (ISM) Dhanbad,Mineral and Metallurgical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,12446,13599
+IIT (ISM) Dhanbad,Mineral and Metallurgical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),21216,23512
+IIT (ISM) Dhanbad,Mining Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,8439,14762
+IIT (ISM) Dhanbad,Mining Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),19181,25824
+IIT (ISM) Dhanbad,Mining Machinery Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,13690,15321
+IIT (ISM) Dhanbad,Mining Machinery Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),21592,21592
+IIT (ISM) Dhanbad,Petroleum Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,7795,12310
+IIT (ISM) Dhanbad,Petroleum Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),16543,20817
+IIT Ropar,Artificial Intelligence and Data Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,2254,2656
+IIT Ropar,Artificial Intelligence and Data Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),7074,8412
+IIT Ropar,Chemical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,8597,10097
+IIT Ropar,Chemical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),14701,15740
+IIT Ropar,Civil Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,10126,11365
+IIT Ropar,Civil Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),17886,18966
+IIT Ropar,Computer Science and Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,1158,2379
+IIT Ropar,Computer Science and Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),3461,6044
+IIT Ropar,Electrical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,3406,5528
+IIT Ropar,Electrical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),6205,12038
+IIT Ropar,Engineering Physics,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,8158,9142
+IIT Ropar,Engineering Physics,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),16348,18747
+IIT Ropar,Mathematics and Computing,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,1755,3518
+IIT Ropar,Mathematics and Computing,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),8734,9494
+IIT Ropar,Mechanical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,6919,8636
+IIT Ropar,Mechanical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),15057,17603
+IIT Ropar,Metallurgical and Materials Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,11211,13009
+IIT Ropar,Metallurgical and Materials Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),20595,21582
+IIT (BHU) Varanasi,Architecture,5,Bachelor of Architecture,AI,OPEN,Gender-Neutral,20507,22390
+IIT (BHU) Varanasi,Architecture,5,Bachelor of Architecture,AI,OPEN,Female-only (including Supernumerary),25278,25278
+IIT (BHU) Varanasi,Biochemical Engineering with M.Tech. in Biochemical Engineering and Biotechnology,5,Bachelor and Master of Technology (Dual Degree),AI,OPEN,Gender-Neutral,10717,12761
+IIT (BHU) Varanasi,Biochemical Engineering with M.Tech. in Biochemical Engineering and Biotechnology,5,Bachelor and Master of Technology (Dual Degree),AI,OPEN,Female-only (including Supernumerary),20653,20966
+IIT (BHU) Varanasi,Bioengineering with M.Tech in Biomedical Technology,5,Bachelor and Master of Technology (Dual Degree),AI,OPEN,Gender-Neutral,11279,14001
+IIT (BHU) Varanasi,Bioengineering with M.Tech in Biomedical Technology,5,Bachelor and Master of Technology (Dual Degree),AI,OPEN,Female-only (including Supernumerary),17189,18700
+IIT (BHU) Varanasi,Ceramic Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,10504,12154
+IIT (BHU) Varanasi,Ceramic Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),18654,22716
+IIT (BHU) Varanasi,Ceramic Engineering,5,Bachelor and Master of Technology (Dual Degree),AI,OPEN,Gender-Neutral,12260,13931
+IIT (BHU) Varanasi,Ceramic Engineering,5,Bachelor and Master of Technology (Dual Degree),AI,OPEN,Female-only (including Supernumerary),24628,24753
+IIT (BHU) Varanasi,Chemical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,5715,7757
+IIT (BHU) Varanasi,Chemical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),12307,16188
+IIT (BHU) Varanasi,Civil Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,7809,9339
+IIT (BHU) Varanasi,Civil Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),15552,18970
+IIT (BHU) Varanasi,Civil Engineering,5,Bachelor and Master of Technology (Dual Degree),AI,OPEN,Gender-Neutral,8533,10583
+IIT (BHU) Varanasi,Civil Engineering,5,Bachelor and Master of Technology (Dual Degree),AI,OPEN,Female-only (including Supernumerary),18871,19360
+IIT (BHU) Varanasi,Computer Science and Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,667,1071
+IIT (BHU) Varanasi,Computer Science and Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),2562,4130
+IIT (BHU) Varanasi,Computer Science and Engineering,5,Bachelor and Master of Technology (Dual Degree),AI,OPEN,Gender-Neutral,1120,1510
+IIT (BHU) Varanasi,Computer Science and Engineering,5,Bachelor and Master of Technology (Dual Degree),AI,OPEN,Female-only (including Supernumerary),4165,4593
+IIT (BHU) Varanasi,Electrical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,2852,3608
+IIT (BHU) Varanasi,Electrical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),6391,10177
+IIT (BHU) Varanasi,Electrical Engineering with M.Tech. in Power Electronics,5,Bachelor and Master of Technology (Dual Degree),AI,OPEN,Gender-Neutral,3826,4619
+IIT (BHU) Varanasi,Electrical Engineering with M.Tech. in Power Electronics,5,Bachelor and Master of Technology (Dual Degree),AI,OPEN,Female-only (including Supernumerary),10337,10830
+IIT (BHU) Varanasi,Electronics Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,2110,2826
+IIT (BHU) Varanasi,Electronics Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),5767,6986
+IIT (BHU) Varanasi,Engineering Physics,5,Bachelor and Master of Technology (Dual Degree),AI,OPEN,Gender-Neutral,6196,7764
+IIT (BHU) Varanasi,Engineering Physics,5,Bachelor and Master of Technology (Dual Degree),AI,OPEN,Female-only (including Supernumerary),16241,16996
+IIT (BHU) Varanasi,Industrial Chemistry,5,Bachelor and Master of Technology (Dual Degree),AI,OPEN,Gender-Neutral,10813,12317
+IIT (BHU) Varanasi,Industrial Chemistry,5,Bachelor and Master of Technology (Dual Degree),AI,OPEN,Female-only (including Supernumerary),21633,23182
+IIT (BHU) Varanasi,Materials Science and Technology,5,Bachelor and Master of Technology (Dual Degree),AI,OPEN,Gender-Neutral,8540,12524
+IIT (BHU) Varanasi,Materials Science and Technology,5,Bachelor and Master of Technology (Dual Degree),AI,OPEN,Female-only (including Supernumerary),19448,19700
+IIT (BHU) Varanasi,Mathematics and Computing,5,Bachelor and Master of Technology (Dual Degree),AI,OPEN,Gender-Neutral,1538,2154
+IIT (BHU) Varanasi,Mathematics and Computing,5,Bachelor and Master of Technology (Dual Degree),AI,OPEN,Female-only (including Supernumerary),4954,6186
+IIT (BHU) Varanasi,Mechanical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,4029,6596
+IIT (BHU) Varanasi,Mechanical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),11998,15157
+IIT (BHU) Varanasi,Mechanical Engineering,5,Bachelor and Master of Technology (Dual Degree),AI,OPEN,Gender-Neutral,6689,7497
+IIT (BHU) Varanasi,Mechanical Engineering,5,Bachelor and Master of Technology (Dual Degree),AI,OPEN,Female-only (including Supernumerary),14319,16564
+IIT (BHU) Varanasi,Metallurgical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,7717,10740
+IIT (BHU) Varanasi,Metallurgical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),16644,19931
+IIT (BHU) Varanasi,Metallurgical Engineering,5,Bachelor and Master of Technology (Dual Degree),AI,OPEN,Gender-Neutral,10791,11530
+IIT (BHU) Varanasi,Metallurgical Engineering,5,Bachelor and Master of Technology (Dual Degree),AI,OPEN,Female-only (including Supernumerary),16837,22750
+IIT (BHU) Varanasi,Mining Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,10803,12876
+IIT (BHU) Varanasi,Mining Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),20895,24616
+IIT (BHU) Varanasi,Mining Engineering,5,Bachelor and Master of Technology (Dual Degree),AI,OPEN,Gender-Neutral,12958,14557
+IIT (BHU) Varanasi,Mining Engineering,5,Bachelor and Master of Technology (Dual Degree),AI,OPEN,Female-only (including Supernumerary),24523,25614
+IIT (BHU) Varanasi,Pharmaceutical Engineering & Technology,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,11311,13562
+IIT (BHU) Varanasi,Pharmaceutical Engineering & Technology,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),20701,22879
+IIT (BHU) Varanasi,Pharmaceutical Engineering & Technology,5,Bachelor and Master of Technology (Dual Degree),AI,OPEN,Gender-Neutral,13669,14463
+IIT (BHU) Varanasi,Pharmaceutical Engineering & Technology,5,Bachelor and Master of Technology (Dual Degree),AI,OPEN,Female-only (including Supernumerary),21830,24870
+IIT Guwahati,Biosciences and Bioengineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,7410,9178
+IIT Guwahati,Biosciences and Bioengineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),15505,17156
+IIT Guwahati,Chemical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,4618,5363
+IIT Guwahati,Chemical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),11635,12557
+IIT Guwahati,Chemical Science and Technology,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,5443,6834
+IIT Guwahati,Chemical Science and Technology,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),11731,14720
+IIT Guwahati,Civil Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,5869,7670
+IIT Guwahati,Civil Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),15033,16581
+IIT Guwahati,Computer Science and Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,466,623
+IIT Guwahati,Computer Science and Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),1788,2332
+IIT Guwahati,Data Science and Artificial Intelligence,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,829,995
+IIT Guwahati,Data Science and Artificial Intelligence,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),2228,2748
+IIT Guwahati,Electronics and Communication Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,1462,1658
+IIT Guwahati,Electronics and Communication Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),3688,4679
+IIT Guwahati,Electronics and Electrical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,1686,2217
+IIT Guwahati,Electronics and Electrical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),5193,6141
+IIT Guwahati,Energy Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,4960,5920
+IIT Guwahati,Energy Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),9754,11615
+IIT Guwahati,Engineering Physics,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,4302,5686
+IIT Guwahati,Engineering Physics,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),10217,14111
+IIT Guwahati,Mathematics and Computing,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,722,1021
+IIT Guwahati,Mathematics and Computing,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),2578,3350
+IIT Guwahati,Mechanical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,3130,4523
+IIT Guwahati,Mechanical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),7018,12046
+IIT Bhilai,Computer Science and Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,3471,6516
+IIT Bhilai,Computer Science and Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),10240,11544
+IIT Bhilai,Data Science and Artificial Intelligence,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,6043,7570
+IIT Bhilai,Data Science and Artificial Intelligence,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),12695,14348
+IIT Bhilai,Electrical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,7987,10709
+IIT Bhilai,Electrical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),16917,17772
+IIT Bhilai,Electronics and Communication Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,8375,9472
+IIT Bhilai,Electronics and Communication Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),15017,15657
+IIT Bhilai,Materials Science and Metallurgical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,15066,15871
+IIT Bhilai,Materials Science and Metallurgical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),25106,25107
+IIT Bhilai,Mechanical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,11065,13137
+IIT Bhilai,Mechanical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),21738,23440
+IIT Bhilai,Mechatronics Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,8535,10843
+IIT Bhilai,Mechatronics Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),15399,15399
+IIT Goa,Computer Science and Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,4070,5371
+IIT Goa,Computer Science and Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),10256,11151
+IIT Goa,Electrical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,7765,9603
+IIT Goa,Electrical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),15164,16560
+IIT Goa,Mathematics and Computing,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,4928,6685
+IIT Goa,Mathematics and Computing,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),12515,13381
+IIT Goa,Mechanical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,10277,12066
+IIT Goa,Mechanical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),19611,20054
+IIT Palakkad,Civil Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,12874,15812
+IIT Palakkad,Civil Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),19444,23384
+IIT Palakkad,Computer Science and Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,4837,6199
+IIT Palakkad,Computer Science and Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),8303,9127
+IIT Palakkad,Data Science and Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,6267,8084
+IIT Palakkad,Data Science and Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),12138,13283
+IIT Palakkad,Electrical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,8381,9625
+IIT Palakkad,Electrical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),12222,15014
+IIT Palakkad,Mechanical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,10901,12540
+IIT Palakkad,Mechanical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),15990,21578
+IIT Tirupati,Chemical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,12624,14341
+IIT Tirupati,Chemical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),16379,21110
+IIT Tirupati,Civil Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,11383,15429
+IIT Tirupati,Civil Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),21139,23179
+IIT Tirupati,Computer Science and Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,1915,5024
+IIT Tirupati,Computer Science and Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),5737,6324
+IIT Tirupati,Electrical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,6236,8816
+IIT Tirupati,Electrical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),7711,12402
+IIT Tirupati,Engineering Physics,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,9589,12605
+IIT Tirupati,Engineering Physics,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),17187,17187
+IIT Tirupati,Mechanical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,9340,11509
+IIT Tirupati,Mechanical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),14969,20361
+IIT Jammu,Chemical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,12943,15048
+IIT Jammu,Chemical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),18930,21759
+IIT Jammu,Civil Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,11454,15583
+IIT Jammu,Civil Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),23902,25172
+IIT Jammu,Computer Science and Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,3412,6310
+IIT Jammu,Computer Science and Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),8353,12108
+IIT Jammu,Electrical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,7727,10005
+IIT Jammu,Electrical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),15039,18177
+IIT Jammu,Materials Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,14903,16439
+IIT Jammu,Materials Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),24005,25778
+IIT Jammu,Mathematics and Computing,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,6555,7956
+IIT Jammu,Mathematics and Computing,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),12130,14105
+IIT Jammu,Mechanical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,10912,12483
+IIT Jammu,Mechanical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),21564,23887
+IIT Dharwad,Chemical and Biochemical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,14948,15739
+IIT Dharwad,Chemical and Biochemical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),24344,24506
+IIT Dharwad,Civil and Infrastructure Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,14375,15945
+IIT Dharwad,Civil and Infrastructure Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),24560,25079
+IIT Dharwad,Computer Science and Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,3482,6375
+IIT Dharwad,Computer Science and Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),4989,11138
+IIT Dharwad,Electrical and Electronics Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,7796,9778
+IIT Dharwad,Electrical and Electronics Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),15007,15299
+IIT Dharwad,Electronics and Communication Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,4752,8772
+IIT Dharwad,Electronics and Communication Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),10983,14717
+IIT Dharwad,Engineering Physics,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,10655,12851
+IIT Dharwad,Engineering Physics,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),20242,20440
+IIT Dharwad,Interdisciplinary Sciences,5,Bachelor of Science and Master of Science (Dual Degree),AI,OPEN,Gender-Neutral,9258,16968
+IIT Dharwad,Interdisciplinary Sciences,5,Bachelor of Science and Master of Science (Dual Degree),AI,OPEN,Female-only (including Supernumerary),23467,25762
+IIT Dharwad,Mathematics and Computing,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,4677,7381
+IIT Dharwad,Mathematics and Computing,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),11879,12205
+IIT Dharwad,Mechanical Engineering,4,Bachelor of Technology,AI,OPEN,Gender-Neutral,10317,13435
+IIT Dharwad,Mechanical Engineering,4,Bachelor of Technology,AI,OPEN,Female-only (including Supernumerary),19074,21591
