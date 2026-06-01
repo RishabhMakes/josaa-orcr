@@ -6,13 +6,15 @@ get 303 consistent rows in one go instead of typing them manually. Once the
 reviewer starts editing the CSV, this script is irrelevant; the CSV is the
 source of truth.
 
-Rubric (agreed with reviewer):
-  A — CS-pool placements likely. Same pool as CS proper at that institute.
-      Software / quant / ML / PM at top firms is the modal outcome.
-  B — Mixed outcomes; CS-spillover with effort. Bimodal — top tail matches A,
-      median lags.
-  C — Core / specialty placements. Software spillover is rare; outcomes track
-      the branch's traditional industry.
+Rubric (revised — broadened tier A to include consulting/finance pool):
+  A — High-paying placements likely. Modal outcome is software / quant / ML /
+      PM at top tech firms OR consulting (MBB / Tier-2) / IB / non-quant
+      finance at top firms. Median package comparable to CS at that institute.
+  B — Mixed; high-paying outcomes possible with effort. Default placement is
+      core engineering or generalist roles; some students reach the A pool via
+      placement-club work or extracurriculars. Median materially lags A.
+  C — Core / specialty placements. Default outcomes track the branch's
+      traditional industry. Spillover into A roles is rare.
   blank — Too new or too thin a track record to call.
 
 Notes column tries to flag *why* I chose what I chose for any non-trivial row,
@@ -62,6 +64,7 @@ CS_POOL_PATTERNS = (
     "mathematics and computing",
     "mathematics & computing",
     "mathematics and scientific computing",
+    "statistics and data science",  # quant/DS-heavy curriculum, modal outcome is CS-pool
     "engineering physics",
     "engineering science",
     "electrical engineering",
@@ -74,12 +77,21 @@ CS_POOL_PATTERNS = (
     "vlsi",
 )
 
-MIXED_PATTERNS = (
-    "bs in mathematics",
+# Branches whose modal high-pay outcome at top IITs is consulting / IB / non-quant
+# finance, NOT software. Tier A under the broader rubric at top-7 IITs because
+# consulting/finance recruiting is reliable there.
+MIXED_FINANCE_PATTERNS = (
     "economics",
     "industrial engineering and operations research",
     "industrial and systems engineering",
-    "statistics and data science",
+)
+
+# Genuinely bimodal branches where modal outcome is NOT high-paying — broad /
+# general curricula where the high-pay tail requires student initiative and
+# consulting reach is incidental. BS Math sits here because the modal outcome
+# at top IITs is grad school, with quant as the top tail (not the median).
+MIXED_OTHER_PATTERNS = (
+    "bs in mathematics",
     "general engineering",
     "computational engineering",
 )
@@ -114,8 +126,10 @@ def categorize(branch: str) -> str:
         return "cs_core"
     if any(p in b for p in CS_POOL_PATTERNS):
         return "cs_pool"
-    if any(p in b for p in MIXED_PATTERNS):
-        return "mixed"
+    if any(p in b for p in MIXED_FINANCE_PATTERNS):
+        return "mixed_finance"
+    if any(p in b for p in MIXED_OTHER_PATTERNS):
+        return "mixed_other"
     if any(p in b for p in CORE_ENG_PATTERNS):
         return "core"
     return "specialty"
@@ -177,18 +191,26 @@ def tier_note(branch: str, inst: str) -> tuple[str, str]:
             return ("B", "CS-pool branch at newer IIT — spillover real but "
                          "less reliable than at established IITs")
 
-    if c == "mixed":
+    if c == "mixed_finance":
         if s in ("top5", "top7"):
-            return ("B", "Bimodal — top tail matches CS, median materially lags")
+            return ("A", "Modal high-pay outcome is consulting / IB / finance, "
+                         "not CS — reliable recruiting at top-7 IIT")
         if s == "estnew":
-            return ("B", "Bimodal — CS-spillover possible with effort")
+            return ("B", "Consulting / finance pool exists but recruiting is "
+                         "less reliable at this institute")
         if s == "newest":
-            return ("C", "Bimodal at newer IIT — weaker placement support, "
-                         "spillover unreliable")
+            return ("C", "Consulting / finance pool weak at newer IIT")
+
+    if c == "mixed_other":
+        if s in ("top5", "top7", "estnew"):
+            return ("B", "Bimodal — high-pay tail (quant / SDE / consulting) "
+                         "exists but median sits below A")
+        if s == "newest":
+            return ("C", "Bimodal at newer IIT — high-pay outcomes unreliable")
 
     if c == "core":
         if s == "top5":
-            return ("B", "Core engineering at top-5 IIT — real SDE/consulting "
+            return ("B", "Core engineering at top-5 IIT — real SDE / consulting "
                          "spillover via placement strength")
         return ("C", "")
 
@@ -206,7 +228,14 @@ def tier_note(branch: str, inst: str) -> tuple[str, str]:
         return ("B", "CS-pool branch + MBA at newer IIT")
 
     if c == "mixed_mba":
-        return ("B", "Mixed-outcome base + MBA — consulting / finance tail")
+        if s in ("top5", "top7"):
+            return ("A", "Mixed-finance base + MBA — consulting / finance "
+                         "recruiting reliable at top-7 IIT")
+        if s == "estnew":
+            return ("B", "Mixed-finance base + MBA — consulting recruiting less "
+                         "reliable at this institute")
+        if s == "newest":
+            return ("C", "Mixed-finance base + MBA at newer IIT")
 
     if c == "core_mba":
         return ("C", "Core branch + MBA — MBA helps with management/consulting "
