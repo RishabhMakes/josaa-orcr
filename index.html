@@ -74,6 +74,10 @@
   .year-2024 { color: var(--warn); }
   .duration-badge { font-variant-numeric: tabular-nums; font-weight: 500; }
   .duration-5 { color: var(--warn); }
+  .tier-badge { display: inline-block; min-width: 18px; padding: 1px 5px; border-radius: 4px; font-size: 11px; font-weight: 600; text-align: center; margin-right: 6px; color: white; cursor: help; }
+  .tier-A { background: var(--accent-2); }
+  .tier-B { background: var(--warn); color: #1a1f2b; }
+  .tier-C { background: var(--bad); }
   .pill { display: inline-block; padding: 1px 7px; border-radius: 4px; font-size: 11px; background: var(--panel-2); border: 1px solid var(--border); color: var(--muted); }
   .star-col { width: 32px; padding-left: 8px; padding-right: 4px; text-align: center; cursor: default; }
   thead th.star-col { cursor: default; }
@@ -136,6 +140,15 @@
         <label class="title" for="filterProgram">Branch / degree contains</label>
         <input id="filterProgram" type="search" placeholder="e.g. Computer, Aero, Dual Degree">
       </div>
+      <div class="filter-block">
+        <label class="title">Placement tier</label>
+        <div class="options" id="filterTier">
+          <label title="Modal high-pay outcome: software / quant / ML / PM at top tech firms OR consulting / IB / non-quant finance"><input type="checkbox" value="A" checked> A &mdash; High-paying likely</label>
+          <label title="Bimodal — high-pay tail exists but median sits below A"><input type="checkbox" value="B" checked> B &mdash; Mixed</label>
+          <label title="Default outcomes track the branch's traditional industry"><input type="checkbox" value="C" checked> C &mdash; Core/specialty</label>
+          <label title="Programs too new or too thin a track record to call"><input type="checkbox" value="" checked> Untagged</label>
+        </div>
+      </div>
       <div class="filter-block" id="genderFilterBlock" hidden>
         <label class="title">Gender</label>
         <div class="options" id="filterGender"></div>
@@ -143,6 +156,7 @@
       <div class="filter-block">
         <label class="title">Show columns</label>
         <div class="options" id="columnToggles">
+          <label><input type="checkbox" id="toggleTier"> Tier</label>
           <label><input type="checkbox" id="toggleDegree"> Degree Name</label>
           <label><input type="checkbox" id="toggleGender"> Gender</label>
           <label><input type="checkbox" id="toggleOpening"> Opening rank</label>
@@ -183,6 +197,7 @@
           <th data-key="year">Year <span class="arrow"></span></th>
           <th data-key="institute">Institute <span class="arrow"></span></th>
           <th data-key="branch">Branch <span class="arrow"></span></th>
+          <th data-key="tier" id="thTier" class="num" hidden>Tier <span class="arrow"></span></th>
           <th data-key="duration" class="num">Years <span class="arrow"></span></th>
           <th data-key="degree" id="thDegree" hidden>Degree <span class="arrow"></span></th>
           <th data-key="gender" id="thGender">Gender <span class="arrow"></span></th>
@@ -218,7 +233,16 @@
 <script>
 const COLUMNS = ["year","institute","program","quota","seatType","gender","opening","closing"];
 const DEFAULT_FILES = ["2024.csv", "2025.csv"];
+const TIER_FILE = "branch_pairs.csv";
 const RENDER_CAP = 2000;
+
+// (institute, branch) -> { tier, notes }. Populated by loadTiers() before
+// csvToRecords runs, so each record can be decorated inline. If the tier
+// file fails to load, this stays empty and rows render with tier=null.
+const tierMap = new Map();
+function tierKey(institute, branch) {
+  return `${institute}||${branch}`;
+}
 
 const INSTITUTE_GROUPS = {
   top7: new Set([
@@ -242,11 +266,13 @@ const state = {
     myRank: null,
     rankBuffer: null,
     shortlistOnly: false,
+    tiers: new Set(["A", "B", "C", ""]), // "" stands for untagged
   },
   columns: {
     opening: false,
     degree: false,
     gender: false,
+    tier: false,
   },
   shortlist: [], // ordered list of rowKey strings (priority order)
   shortlistComments: {}, // rowKey -> comment string
@@ -381,6 +407,9 @@ function csvToRecords(text, year) {
     };
     rec.opening = parseRank(rec.openingRaw);
     rec.closing = parseRank(rec.closingRaw);
+    const tinfo = tierMap.get(tierKey(rec.institute, rec.branch));
+    rec.tier = tinfo ? tinfo.tier : null;
+    rec.tierNotes = tinfo ? tinfo.notes : "";
     if (!rec.institute && rec.opening == null && rec.closing == null) continue;
     records.push(rec);
   }
@@ -393,16 +422,56 @@ function inferYearFromName(name) {
 }
 
 // ----- Data loading -----
-async function loadDefault() {
-  setStatus("Loading 2024.csv & 2025.csv…");
+async function loadTiers() {
+  // Best-effort: fail silently and leave tierMap empty so the page still works.
   try {
-    const fetched = await Promise.all(DEFAULT_FILES.map(async (name) => {
+    const res = await fetch(TIER_FILE, { cache: "no-store" });
+    if (!res.ok) {
+      console.warn(`Tier file ${TIER_FILE} not loaded (HTTP ${res.status}); rows will be untagged.`);
+      return;
+    }
+    const text = await res.text();
+    const grid = parseCSV(text).filter(r => r.length && r.some(c => c && c.trim() !== ""));
+    if (!grid.length) return;
+    const header = grid[0].map(h => h.trim().toLowerCase());
+    const iInst = header.indexOf("institute");
+    const iBranch = header.indexOf("branch");
+    const iTier = header.indexOf("tier");
+    const iNotes = header.indexOf("notes");
+    if (iInst < 0 || iBranch < 0 || iTier < 0) {
+      console.warn(`Tier file missing required columns (institute/branch/tier); rows will be untagged.`);
+      return;
+    }
+    tierMap.clear();
+    for (let r = 1; r < grid.length; r++) {
+      const cols = grid[r];
+      const inst = (cols[iInst] || "").trim();
+      const branch = (cols[iBranch] || "").trim();
+      const tier = (cols[iTier] || "").trim();
+      const notes = iNotes >= 0 ? (cols[iNotes] || "").trim() : "";
+      if (!inst || !branch) continue;
+      tierMap.set(tierKey(inst, branch), { tier: tier || null, notes });
+    }
+  } catch (err) {
+    console.warn(`Tier file load failed: ${err.message}; rows will be untagged.`);
+  }
+}
+
+async function loadDefault() {
+  setStatus("Loading 2024.csv, 2025.csv & tiers…");
+  try {
+    // Load tiers in parallel with the year CSVs, but make sure tierMap is
+    // populated before we hand text to csvToRecords (which decorates each
+    // record from the map).
+    const yearTextsPromise = Promise.all(DEFAULT_FILES.map(async (name) => {
       const res = await fetch(name, { cache: "no-store" });
       if (!res.ok) throw new Error(name + " " + res.status);
-      const text = await res.text();
-      return csvToRecords(text, inferYearFromName(name));
+      return { name, text: await res.text() };
     }));
-    state.rows = fetched.flat();
+    const [_, yearTexts] = await Promise.all([loadTiers(), yearTextsPromise]);
+    state.rows = yearTexts.flatMap(({ name, text }) =>
+      csvToRecords(text, inferYearFromName(name))
+    );
     onDataLoaded(DEFAULT_FILES);
   } catch (err) {
     setStatus(`Couldn't load default CSVs (${err.message}). Upload them manually below.`, true);
@@ -506,6 +575,7 @@ function applyFilters() {
   return state.rows.filter(r => {
     if (f.shortlistOnly && !isShortlisted(rowKey(r))) return false;
     if (!f.shortlistOnly && f.year !== "all" && r.year !== f.year) return false;
+    if (!f.shortlistOnly && !f.tiers.has(r.tier ?? "")) return false;
     if (f.quota.size && !f.quota.has(r.quota)) return false;
     if (f.seatType.size && !f.seatType.has(r.seatType)) return false;
     if (gFilter.size && !gFilter.has(r.gender)) return false;
@@ -523,6 +593,8 @@ function applyFilters() {
   });
 }
 
+const TIER_RANK = { A: 0, B: 1, C: 2 };
+
 function sortRows(rows) {
   const { key, dir } = state.sort;
   const sign = dir === "asc" ? 1 : -1;
@@ -535,6 +607,10 @@ function sortRows(rows) {
       if (!hasRank) return 0;
       av = a.closing == null ? Infinity : a.closing - state.filters.myRank;
       bv = b.closing == null ? Infinity : b.closing - state.filters.myRank;
+    } else if (key === "tier") {
+      // A < B < C < null (untagged sinks to the bottom on ascending sort).
+      av = a.tier in TIER_RANK ? TIER_RANK[a.tier] : 3;
+      bv = b.tier in TIER_RANK ? TIER_RANK[b.tier] : 3;
     } else if (numericKeys.has(key)) {
       av = a[key]; bv = b[key];
       if (av == null) av = dir === "asc" ? Infinity : -Infinity;
@@ -582,6 +658,8 @@ function render() {
   $("#thGender").hidden = !showGender;
   const showDegree = showDegreeColumn();
   $("#thDegree").hidden = !showDegree;
+  const showTier = !!state.columns.tier;
+  $("#thTier").hidden = !showTier;
   // Always include Opening rank in shortlist mode so users see opening
   // alongside closing without having to remember to toggle the column.
   const showOpening = !!state.columns.opening || isShortlistMode;
@@ -598,10 +676,11 @@ function render() {
   $$("#resultsTable tbody").forEach(tb => tb.remove());
 
   const slice = rows.slice(0, RENDER_CAP);
+  const opts = { showTier, showDegree, showGender, showOpening };
   if (isShortlistMode) {
-    renderShortlistMode(table, slice, { showDegree, showGender, showOpening });
+    renderShortlistMode(table, slice, opts);
   } else {
-    renderNormalMode(table, slice, { showDegree, showGender, showOpening });
+    renderNormalMode(table, slice, opts);
   }
 
   $("#emptyState").hidden = rows.length > 0;
@@ -631,11 +710,18 @@ function rowStarCell(key, starred) {
   return `<td class="star-col"><button type="button" class="star${starred ? ' on' : ''}" data-key="${escapeHTML(key)}" aria-label="${starred ? 'Remove from shortlist' : 'Add to shortlist'}" title="${starred ? 'Remove from shortlist' : 'Add to shortlist'}">${starred ? '\u2605' : '\u2606'}</button></td>`;
 }
 
-function rowBodyCells(r, { showDegree, showGender, showOpening }) {
+function tierBadgeHTML(r) {
+  if (!r.tier) return "";
+  const titleAttr = r.tierNotes ? ` title="${escapeHTML(r.tierNotes)}"` : "";
+  return `<span class="tier-badge tier-${escapeHTML(r.tier)}"${titleAttr}>${escapeHTML(r.tier)}</span>`;
+}
+
+function rowBodyCells(r, { showTier, showDegree, showGender, showOpening }) {
   const cells = [];
   cells.push(`<td><span class="year-badge year-${r.year}">${r.year}</span></td>`);
   cells.push(`<td>${escapeHTML(r.institute)}</td>`);
-  cells.push(`<td>${escapeHTML(r.branch)}</td>`);
+  cells.push(`<td>${tierBadgeHTML(r)}${escapeHTML(r.branch)}</td>`);
+  if (showTier) cells.push(`<td class="num">${escapeHTML(r.tier ?? "")}</td>`);
   cells.push(`<td class="num">${r.duration == null ? "" : `<span class="duration-badge duration-${r.duration}">${r.duration}</span>`}</td>`);
   if (showDegree) cells.push(`<td>${escapeHTML(r.degree)}</td>`);
   if (showGender) cells.push(`<td>${escapeHTML(r.gender)}</td>`);
@@ -711,6 +797,11 @@ function init() {
     state.filters.instituteGroups = new Set(checked);
     render();
   });
+  $("#filterTier").addEventListener("change", () => {
+    const checked = $$("#filterTier input:checked").map(i => i.value);
+    state.filters.tiers = new Set(checked);
+    render();
+  });
   $("#filterProgram").addEventListener("input", e => {
     state.filters.program = e.target.value.trim();
     render();
@@ -727,6 +818,10 @@ function init() {
   });
   $("#toggleOpening").addEventListener("change", e => {
     state.columns.opening = e.target.checked;
+    render();
+  });
+  $("#toggleTier").addEventListener("change", e => {
+    state.columns.tier = e.target.checked;
     render();
   });
   $("#toggleDegree").addEventListener("change", e => {
@@ -755,18 +850,21 @@ function init() {
       quota: new Set(), seatType: new Set(), gender: new Set(),
       myRank: null, rankBuffer: null,
       shortlistOnly: false,
+      tiers: new Set(["A", "B", "C", ""]),
     };
-    state.columns = { opening: false, degree: false, gender: false };
+    state.columns = { opening: false, degree: false, gender: false, tier: false };
     $("#filterProgram").value = "";
     $("#myRank").value = "";
     $("#rankBuffer").value = "";
     $("#filterYear").value = "2025";
     $("#toggleOpening").checked = false;
+    $("#toggleTier").checked = false;
     $("#toggleDegree").checked = false;
     $("#toggleGender").checked = false;
     setShortlistOnly(false);
     $("#genderFilterBlock").hidden = true;
     $$("#filterInstituteGroup input").forEach(cb => { cb.checked = cb.value === "top7" || cb.value === "newGood"; });
+    $$("#filterTier input").forEach(cb => { cb.checked = true; });
     buildOptionFilters();
     state.sort = { key: "closing", dir: "asc" };
     render();
@@ -777,7 +875,9 @@ function init() {
     const showGender = showGenderColumn();
     const showDegree = showDegreeColumn();
     const showOpening = !!state.columns.opening || !!state.filters.shortlistOnly;
-    const headers = ["Year","Institute","Branch","Duration (Years)"];
+    // Tier ships with the row data unconditionally (it's a property, not a
+    // visual toggle).
+    const headers = ["Year","Institute","Branch","Tier","Duration (Years)"];
     if (showDegree) headers.push("Degree Title");
     if (showGender) headers.push("Gender");
     if (showOpening) headers.push("Opening Rank");
@@ -786,7 +886,7 @@ function init() {
     const lines = [headers.join(",")];
     for (const r of rows) {
       const margin = hasRank && r.closing != null ? r.closing - state.filters.myRank : "";
-      const cells = [r.year, r.institute, r.branch, r.duration ?? ""];
+      const cells = [r.year, r.institute, r.branch, r.tier ?? "", r.duration ?? ""];
       if (showDegree) cells.push(r.degree);
       if (showGender) cells.push(r.gender);
       if (showOpening) cells.push(r.opening ?? "");
