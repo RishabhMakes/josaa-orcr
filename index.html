@@ -98,6 +98,32 @@
   .error { color: var(--bad); }
   .muted { color: var(--muted); }
   details summary { cursor: pointer; color: var(--muted); }
+
+  /* ----- Resort overlay ----- */
+  .resort-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; padding: 24px; z-index: 1000; }
+  .resort-overlay[hidden] { display: none; }
+  .resort-modal { background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 20px; width: 100%; max-width: 820px; box-shadow: 0 16px 48px rgba(0,0,0,0.5); }
+  .resort-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .resort-head h2 { margin: 0; font-size: 18px; }
+  .resort-sub { font-size: 13px; margin-top: 4px; }
+  .resort-cards { display: grid; grid-template-columns: 1fr auto 1fr; align-items: stretch; gap: 12px; margin: 18px 0; }
+  .resort-vs { display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; }
+  .resort-card { text-align: left; background: var(--panel-2); border: 2px solid var(--border); color: var(--text); border-radius: 10px; padding: 16px; cursor: pointer; font: inherit; transition: border-color 0.12s ease, transform 0.06s ease; min-height: 132px; display: flex; flex-direction: column; gap: 6px; }
+  .resort-card:hover, .resort-card:focus-visible { border-color: var(--accent); outline: none; }
+  .resort-card:active { transform: translateY(1px); }
+  .resort-card .rc-inst { font-weight: 600; font-size: 15px; }
+  .resort-card .rc-branch { font-size: 14px; }
+  .resort-card .rc-dur { font-size: 12px; color: var(--text); font-variant-numeric: tabular-nums; }
+  .resort-card .rc-meta { color: var(--muted); font-size: 12px; display: flex; flex-wrap: wrap; gap: 6px 24px; margin-top: auto; }
+  .resort-card .rc-pair { display: inline-flex; align-items: baseline; gap: 4px; }
+  .resort-card .rc-meta strong { color: var(--text); font-variant-numeric: tabular-nums; }
+  .resort-card .rc-comment { font-size: 12px; color: var(--muted); font-style: italic; white-space: pre-wrap; word-break: break-word; }
+  .resort-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .resort-progress { margin-left: auto; font-size: 12px; text-align: right; }
+  @media (max-width: 640px) {
+    .resort-cards { grid-template-columns: 1fr; }
+    .resort-vs { padding: 2px 0; }
+  }
 </style>
 </head>
 <body>
@@ -180,6 +206,7 @@
     <div class="actions">
       <div>
         <button id="toggleShortlistBtn" aria-pressed="false">View Shortlist</button>
+        <button id="resortBtn" class="secondary" hidden title="Re-rank your shortlist with quick pairwise comparisons">Create Ranked list</button>
       </div>
       <div class="count">
         <span id="resultCount"></span>
@@ -211,6 +238,26 @@
     <div class="empty" id="emptyState" hidden>No rows match your filters.</div>
   </div>
 </main>
+
+<div id="resortOverlay" class="resort-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="resortTitle">
+  <div class="resort-modal">
+    <div class="resort-head">
+      <h2 id="resortTitle">Which would you prefer?</h2>
+      <button id="resortCloseBtn" class="secondary" title="Finish &amp; apply (q)" aria-label="Finish and apply">Finish &amp; apply</button>
+    </div>
+    <div class="resort-sub muted">Click the card you'd rather have. Your shortlist re-orders itself when you finish.</div>
+    <div class="resort-cards">
+      <button type="button" class="resort-card" id="resortCardA"></button>
+      <div class="resort-vs">vs</div>
+      <button type="button" class="resort-card" id="resortCardB"></button>
+    </div>
+    <div class="resort-actions">
+      <button type="button" id="resortTieBtn" class="secondary">Tie</button>
+      <button type="button" id="resortSkipBtn" class="secondary">Skip</button>
+      <span class="resort-progress muted" id="resortProgress"></span>
+    </div>
+  </div>
+</div>
 
 <footer>
   <div class="data-source" id="dataSource">
@@ -276,10 +323,12 @@ const state = {
   },
   shortlist: [], // ordered list of rowKey strings (priority order)
   shortlistComments: {}, // rowKey -> comment string
+  resort: { comparisons: [] }, // persisted USER pairwise answers: [aKey, bKey, wa]
   sort: { key: "closing", dir: "asc" },
 };
 
 const LS_KEY = "orcr.shortlist.v2";
+const RESORT_LS_KEY = "orcr.resort.v1";
 
 function loadShortlist() {
   try {
@@ -307,6 +356,37 @@ function saveShortlist() {
     localStorage.setItem(LS_KEY, JSON.stringify({
       order: state.shortlist,
       comments: state.shortlistComments,
+    }));
+  } catch {}
+}
+
+// Resort comparison history lives under its OWN key so the legacy shortlist
+// payload (orcr.shortlist.v2) is never touched. We persist only the user's
+// pairwise answers; the closing-rank seed comparisons are regenerated each
+// session from current data, so they don't need storing.
+function loadResort() {
+  try {
+    const raw = localStorage.getItem(RESORT_LS_KEY);
+    if (!raw) { state.resort = { comparisons: [] }; return; }
+    const parsed = JSON.parse(raw);
+    const list = parsed && Array.isArray(parsed.comparisons) ? parsed.comparisons : [];
+    // Keep only well-formed triples [aKey, bKey, wa] with wa in [0,1].
+    state.resort = {
+      comparisons: list.filter(c =>
+        Array.isArray(c) && c.length === 3 &&
+        typeof c[0] === "string" && typeof c[1] === "string" &&
+        typeof c[2] === "number" && c[2] >= 0 && c[2] <= 1),
+    };
+  } catch {
+    state.resort = { comparisons: [] };
+  }
+}
+
+function saveResort() {
+  try {
+    localStorage.setItem(RESORT_LS_KEY, JSON.stringify({
+      comparisons: state.resort.comparisons,
+      updatedAt: Date.now(),
     }));
   } catch {}
 }
@@ -668,6 +748,7 @@ function render() {
   const filtered = applyFilters();
   $("#thDragHandle").hidden = !isShortlistMode;
   $("#thComment").hidden = !isShortlistMode;
+  $("#resortBtn").hidden = !isShortlistMode;
   const rows = isShortlistMode
     ? sortByShortlistOrder(filtered)
     : sortRows(filtered);
@@ -784,6 +865,321 @@ function escapeHTML(s) {
   return String(s ?? "").replace(/[&<>"']/g, c => ({
     "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
   }[c]));
+}
+
+// ----- Resort: Bradley-Terry pairwise re-ranking of the shortlist -----
+// Mirrors gwern.net/resorter: fold the prior ratings (here, closing rank
+// reversed) into the comparison set as seeds, then refine with the user's
+// noisy pairwise judgments and infer latent strengths via a Bradley-Terry
+// minorization-maximization (MM) fit. No external libraries.
+
+// Build a key -> row lookup from all loaded rows (both years are loaded at
+// startup, so a shortlisted key resolves regardless of the active year filter).
+function buildRowByKey() {
+  const m = new Map();
+  for (const r of state.rows) {
+    const k = rowKey(r);
+    if (!m.has(k)) m.set(k, r);
+  }
+  return m;
+}
+
+// Seed comparisons from closing rank: lower closing rank = better preference.
+// Adjacent items in the closing-rank order seed a win (or a tie when equal),
+// exactly as gwern seeds from an existing rating column.
+function seedComparisonsFromClosing(keys) {
+  const rowByKey = buildRowByKey();
+  const items = keys
+    .map(k => ({ key: k, closing: rowByKey.get(k)?.closing }))
+    .filter(x => x.closing != null);
+  items.sort((a, b) => a.closing - b.closing);
+  const seeds = [];
+  for (let i = 0; i < items.length - 1; i++) {
+    const a = items[i], b = items[i + 1];
+    seeds.push([a.key, b.key, a.closing === b.closing ? 0.5 : 1]);
+  }
+  return seeds;
+}
+
+// Bradley-Terry MM fit. Returns Map<key, score> where score = log-strength
+// (higher = better). Strengths are clamped so an all-wins / all-losses item
+// can't diverge to +/-Infinity; the ranking order is preserved either way.
+function fitBradleyTerry(keys, comparisons, iterations = 120) {
+  const scores = new Map();
+  const n = keys.length;
+  if (n === 0) return scores;
+  const idx = new Map(keys.map((k, i) => [k, i]));
+  const wins = new Array(n).fill(0);
+  const pairN = new Map(); // "i,j" (i<j) -> number of comparisons between i & j
+  for (const c of comparisons) {
+    const ia = idx.get(c[0]), ib = idx.get(c[1]);
+    if (ia == null || ib == null || ia === ib) continue;
+    const wa = c[2];
+    wins[ia] += wa;
+    wins[ib] += 1 - wa;
+    const pk = ia < ib ? ia + "," + ib : ib + "," + ia;
+    pairN.set(pk, (pairN.get(pk) || 0) + 1);
+  }
+  const pairs = Array.from(pairN, ([pk, cnt]) => {
+    const [i, j] = pk.split(",").map(Number);
+    return [i, j, cnt];
+  });
+  const CLAMP_LO = 1e-9, CLAMP_HI = 1e9;
+  let p = new Array(n).fill(1);
+  for (let iter = 0; iter < iterations; iter++) {
+    const denom = new Array(n).fill(0);
+    for (const [i, j, cnt] of pairs) {
+      const d = cnt / (p[i] + p[j]);
+      denom[i] += d;
+      denom[j] += d;
+    }
+    const np = new Array(n);
+    for (let i = 0; i < n; i++) {
+      let v = denom[i] > 0 ? wins[i] / denom[i] : p[i];
+      if (!Number.isFinite(v) || v <= 0) v = CLAMP_LO;
+      np[i] = Math.min(CLAMP_HI, Math.max(CLAMP_LO, v));
+    }
+    // Renormalize to geometric mean 1 to keep the scale stable across iters.
+    let logSum = 0;
+    for (let i = 0; i < n; i++) logSum += Math.log(np[i]);
+    const gm = Math.exp(logSum / n);
+    for (let i = 0; i < n; i++) p[i] = np[i] / gm;
+  }
+  for (let i = 0; i < n; i++) scores.set(keys[i], Math.log(p[i]));
+  return scores;
+}
+
+// Count how many comparisons each key participates in (seed + answers).
+function comparisonCounts(comparisons) {
+  const counts = new Map();
+  for (const c of comparisons) {
+    counts.set(c[0], (counts.get(c[0]) || 0) + 1);
+    counts.set(c[1], (counts.get(c[1]) || 0) + 1);
+  }
+  return counts;
+}
+
+// Canonical (order-independent) key for a pair of rowKeys.
+function pcKey(a, b) { return a < b ? a + "\u0001" + b : b + "\u0001" + a; }
+
+// Pick the next pair to ask. Two improvements over a pure greedy heuristic, to
+// avoid the "same pair again very soon" clustering gwern warns about:
+//   1. Coverage-first: while there are adjacent ranked pairs the USER hasn't
+//      answered yet (seeds don't count), ask those first so early questions
+//      spread across the whole list.
+//   2. Cooldown: never re-ask a pair that's in `recentSet` (the last few asked)
+//      unless every candidate is on cooldown.
+// Once coverage is done it falls back to gwern's uncertainty heuristic (most-
+// uncertain item + its higher-uncertainty neighbour, with a periodic random
+// restart), where repeats legitimately build confidence.
+//   - counts:     comparison count per item (seeds + answers) for uncertainty
+//   - pairCounts: USER-answer count per pair (seeds excluded) for coverage
+//   - recentSet:  pair keys recently asked, to skip on cooldown
+function pickPair(keys, scores, counts, pairCounts, recentSet, queryIndex) {
+  const n = keys.length;
+  if (n < 2) return null;
+  const ranked = keys.slice().sort((a, b) => (scores.get(b) ?? 0) - (scores.get(a) ?? 0));
+  const unc = k => 1 / Math.sqrt(1 + (counts.get(k) || 0));
+
+  // 1) Coverage-first over adjacent ranked pairs with no user answer yet.
+  const coverage = [];
+  for (let i = 0; i < n - 1; i++) {
+    const a = ranked[i], b = ranked[i + 1];
+    const pk = pcKey(a, b);
+    if ((pairCounts.get(pk) || 0) === 0 && !recentSet.has(pk)) coverage.push([a, b]);
+  }
+  if (coverage.length) {
+    coverage.sort((x, y) => (unc(y[0]) + unc(y[1])) - (unc(x[0]) + unc(x[1])));
+    return coverage[0];
+  }
+
+  // 2) Uncertainty heuristic with cooldown.
+  const neighbour = i1 =>
+    i1 === n - 1 ? n - 2 :
+    i1 === 0 ? 1 :
+    (unc(ranked[i1 + 1]) > unc(ranked[i1 - 1]) ? i1 + 1 : i1 - 1);
+
+  // Candidate starting items: a shuffled order every 3rd query (random restart),
+  // otherwise ordered by descending uncertainty.
+  let order = Array.from({ length: n }, (_, i) => i);
+  if (queryIndex % 3 === 0) {
+    for (let i = n - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [order[i], order[j]] = [order[j], order[i]];
+    }
+  } else {
+    order.sort((a, b) => unc(ranked[b]) - unc(ranked[a]));
+  }
+
+  let fallback = null;
+  for (const i1 of order) {
+    const pair = [ranked[i1], ranked[neighbour(i1)]];
+    if (!fallback) fallback = pair;
+    if (!recentSet.has(pcKey(pair[0], pair[1]))) return pair;
+  }
+  return fallback; // everything is on cooldown: allow a repeat
+}
+
+// ----- Resort: session controller -----
+const resortSession = {
+  active: false,
+  keys: [],
+  seeds: [],
+  scores: new Map(),
+  pair: null,
+  queryIndex: 0,
+  answered: 0,
+  recent: [],     // pair keys recently asked (cooldown queue)
+  recentMax: 8,   // how many to keep on cooldown (set per session size)
+};
+
+// All comparisons fed to the fit = fresh closing-rank seeds + the user's
+// persisted answers, both filtered to the current shortlist keys.
+function resortAllComparisons() {
+  const keySet = new Set(resortSession.keys);
+  const userComps = state.resort.comparisons.filter(c => keySet.has(c[0]) && keySet.has(c[1]));
+  return resortSession.seeds.concat(userComps);
+}
+
+// USER-answer count per pair (seeds excluded), for coverage-first selection.
+function resortUserPairCounts() {
+  const keySet = new Set(resortSession.keys);
+  const m = new Map();
+  for (const c of state.resort.comparisons) {
+    if (!keySet.has(c[0]) || !keySet.has(c[1])) continue;
+    const pk = pcKey(c[0], c[1]);
+    m.set(pk, (m.get(pk) || 0) + 1);
+  }
+  return m;
+}
+
+// Fit latent scores from the current comparison set. Returns the scores Map
+// and the all-comparisons list (so callers can reuse it for item counts).
+function resortFitScores() {
+  const comps = resortAllComparisons();
+  return { comps, scores: fitBradleyTerry(resortSession.keys, comps) };
+}
+
+// Re-fit and choose the next pair, honouring coverage-first + cooldown.
+function resortRefit() {
+  const { comps, scores } = resortFitScores();
+  resortSession.scores = scores;
+  const counts = comparisonCounts(comps);
+  const pairCounts = resortUserPairCounts();
+  const recentSet = new Set(resortSession.recent);
+  resortSession.pair = pickPair(
+    resortSession.keys, scores, counts, pairCounts, recentSet, resortSession.queryIndex);
+  if (resortSession.pair) {
+    resortSession.recent.push(pcKey(resortSession.pair[0], resortSession.pair[1]));
+    while (resortSession.recent.length > resortSession.recentMax) resortSession.recent.shift();
+  }
+}
+
+function resortCardHTML(r) {
+  if (!r) return "";
+  const meta = [];
+  if (r.opening != null) meta.push(`<span class="rc-pair"><span>Opening</span><strong>${fmt(r.opening)}</strong></span>`);
+  meta.push(`<span class="rc-pair"><span>Closing</span><strong>${fmt(r.closing)}</strong></span>`);
+  const comment = state.shortlistComments[rowKey(r)] || "";
+  return (
+    `<span class="rc-inst">${escapeHTML(r.institute)}</span>` +
+    `<span class="rc-branch">${escapeHTML(r.branch)}</span>` +
+    (r.duration != null ? `<span class="rc-dur">${r.duration} yr</span>` : "") +
+    (comment ? `<span class="rc-comment">${escapeHTML(comment)}</span>` : "") +
+    `<span class="rc-meta">${meta.join("")}</span>`
+  );
+}
+
+function renderResort() {
+  const keys = resortSession.keys;
+  const n = keys.length;
+  const pair = resortSession.pair;
+  const rowByKey = buildRowByKey();
+  const cardA = $("#resortCardA"), cardB = $("#resortCardB");
+  if (!pair) {
+    cardA.innerHTML = cardB.innerHTML = "";
+    return;
+  }
+  cardA.innerHTML = resortCardHTML(rowByKey.get(pair[0]));
+  cardB.innerHTML = resortCardHTML(rowByKey.get(pair[1]));
+  cardA.dataset.key = pair[0];
+  cardB.dataset.key = pair[1];
+
+  // Progress: suggested ~ round(N*ln(N)); "uncertain" = shortlisted items the
+  // user has answered on fewer than twice (seeds excluded), i.e. still needing
+  // attention before the order can be trusted.
+  const suggested = n > 1 ? Math.round(n * Math.log(n)) : 0;
+  const keySet = new Set(keys);
+  const answerCounts = new Map();
+  for (const c of state.resort.comparisons) {
+    if (!keySet.has(c[0]) || !keySet.has(c[1])) continue;
+    answerCounts.set(c[0], (answerCounts.get(c[0]) || 0) + 1);
+    answerCounts.set(c[1], (answerCounts.get(c[1]) || 0) + 1);
+  }
+  let uncertain = 0;
+  for (const k of keys) if ((answerCounts.get(k) || 0) < 2) uncertain++;
+  $("#resortProgress").innerHTML =
+    `Answered <strong>${resortSession.answered}</strong> this session &middot; ` +
+    `suggested ~<strong>${suggested}</strong> &middot; ` +
+    `<strong>${uncertain}</strong>/${n} items still uncertain`;
+}
+
+function startResort() {
+  const keys = state.shortlist.slice();
+  if (keys.length < 2) {
+    setStatus("Add at least 2 items to your shortlist before resorting.", true);
+    return;
+  }
+  resortSession.active = true;
+  resortSession.keys = keys;
+  resortSession.seeds = seedComparisonsFromClosing(keys);
+  resortSession.queryIndex = 0;
+  resortSession.answered = 0;
+  resortSession.recent = [];
+  // Cool down up to ~half the available pairs, capped at 8, but never so much
+  // that small lists can't surface any candidate.
+  const totalPairs = keys.length * (keys.length - 1) / 2;
+  resortSession.recentMax = Math.max(1, Math.min(8, Math.floor(totalPairs / 2)));
+  resortRefit();
+  $("#resortOverlay").hidden = false;
+  renderResort();
+  $("#resortCardA").focus();
+}
+
+// wa: a's win share. 1 = left/a better, 0 = right/b better, 0.5 = tie.
+function resortRecord(wa) {
+  const pair = resortSession.pair;
+  if (!pair) return;
+  state.resort.comparisons.push([pair[0], pair[1], wa]);
+  saveResort();
+  resortSession.answered++;
+  resortSession.queryIndex++;
+  resortRefit();
+  renderResort();
+}
+
+function resortSkip() {
+  resortSession.queryIndex++;
+  resortRefit();
+  renderResort();
+}
+
+function finishResort() {
+  if (!resortSession.active) return;
+  const { scores } = resortFitScores(); // final scores from the latest answers
+  applyResortOrder(scores);
+  resortSession.active = false;
+  $("#resortOverlay").hidden = true;
+  render();
+}
+
+// Reorder ONLY the currently-shortlisted keys by descending strength and save.
+// Comments (keyed by rowKey) are untouched; the legacy shortlist key keeps its
+// shape, just with a re-ordered `order` array.
+function applyResortOrder(scores) {
+  state.shortlist = state.shortlist.slice().sort((a, b) =>
+    (scores.get(b) ?? 0) - (scores.get(a) ?? 0));
+  saveShortlist();
 }
 
 // ----- Wire up -----
@@ -998,7 +1394,26 @@ function init() {
     return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
   }
 
+  // ----- Resort wiring -----
+  $("#resortBtn").addEventListener("click", startResort);
+  $("#resortCardA").addEventListener("click", () => resortRecord(1));
+  $("#resortCardB").addEventListener("click", () => resortRecord(0));
+  $("#resortTieBtn").addEventListener("click", () => resortRecord(0.5));
+  $("#resortSkipBtn").addEventListener("click", resortSkip);
+  $("#resortCloseBtn").addEventListener("click", finishResort);
+  document.addEventListener("keydown", e => {
+    if (!resortSession.active) return;
+    switch (e.key) {
+      case "1": e.preventDefault(); resortRecord(1); break;
+      case "3": e.preventDefault(); resortRecord(0); break;
+      case "2": e.preventDefault(); resortRecord(0.5); break;
+      case "s": case "S": e.preventDefault(); resortSkip(); break;
+      case "q": case "Q": case "Escape": e.preventDefault(); finishResort(); break;
+    }
+  });
+
   loadShortlist();
+  loadResort();
   loadDefault();
 }
 
