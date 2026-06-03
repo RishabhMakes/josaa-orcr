@@ -2,9 +2,10 @@
 """Extract table data from a JoSAA CurrentORCR.aspx page into a CSV.
 
 Usage:
-    python3 extract_orcr.py [input.aspx] [output.csv]
+    python3 scripts/extract_orcr.py [input.aspx] [output.csv]
 
-Defaults to CurrentORCR.aspx -> CurrentORCR.csv next to the script.
+Defaults to raw/CurrentORCR.aspx -> data/CurrentORCR.csv (resolved relative to
+the repo root, regardless of the current working directory).
 By default the script extracts the main GridView table
 (id=ctl00_ContentPlaceHolder1_GridView1). Pass --all to dump every
 <table> in the document into separate CSVs.
@@ -119,18 +120,19 @@ def write_csv(path: Path, headers: list[str], rows: list[list[str]]) -> None:
 
 
 def main() -> int:
+    root = Path(__file__).resolve().parent.parent
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "input",
         nargs="?",
-        default="CurrentORCR.aspx",
-        help="Path to the .aspx file (default: CurrentORCR.aspx)",
+        default=str(root / "raw" / "CurrentORCR.aspx"),
+        help="Path to the .aspx file (default: raw/CurrentORCR.aspx)",
     )
     parser.add_argument(
         "output",
         nargs="?",
-        default="CurrentORCR.csv",
-        help="Path to the output CSV (default: CurrentORCR.csv)",
+        default=str(root / "data" / "CurrentORCR.csv"),
+        help="Path to the output CSV (default: data/CurrentORCR.csv)",
     )
     parser.add_argument(
         "--all",

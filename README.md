@@ -116,15 +116,25 @@ so its scope is deliberately narrow:
 If you need wider coverage (more institutions, years, or categories), you'd need to
 add the corresponding CSVs and extend the data accordingly.
 
-## Files
+## Layout
 
-- `CurrentORCR.aspx`, `2024.aspx` — raw HTML dumps from the JoSAA site.
-- `extract_orcr.py` — parses the `.aspx` files and emits the CSVs.
-- `2024.csv`, `2025.csv` — extracted data, columns:
-  `Institute, Branch, Duration (Years), Degree Title, Quota, Seat Type, Gender, Opening Rank, Closing Rank`.
-- `branch_pairs.csv` — `(institute, branch) -> tier, notes` for placement-tier tags.
-- `index.html` — the interactive UI (all logic lives here). Loads the CSVs and the
-  tier file at startup.
+```
+index.html            interactive UI (all logic lives here); served by GitHub Pages
+data/
+  2024.csv, 2025.csv  extracted rank data (loaded by index.html at startup)
+  branch_pairs.csv    (institute, branch) -> tier, notes for placement-tier tags
+raw/
+  CurrentORCR.aspx    raw HTML dumps from the JoSAA site
+  2024.aspx
+scripts/
+  extract_orcr.py     parses the raw .aspx dumps and emits the CSVs
+  inventory_pairs.py  collects distinct (institute, branch) pairs into branch_pairs.csv
+  seed_tiers.py       one-shot seeding of A/B/C tier tags into branch_pairs.csv
+  audit_tiers.py      audits branch_pairs.csv tier tags against actual closing ranks
+```
+
+`data/2024.csv` and `data/2025.csv` columns:
+`Institute, Branch, Duration (Years), Degree Title, Quota, Seat Type, Gender, Opening Rank, Closing Rank`.
 
 ## Running
 
@@ -139,8 +149,9 @@ load the files manually if you prefer opening `index.html` directly.)
 
 ## Refreshing the data
 
-If you re-download fresh `.aspx` dumps, regenerate the CSVs:
+If you re-download fresh `.aspx` dumps into `raw/`, regenerate the CSVs (run from
+the repo root):
 
 ```bash
-python3 extract_orcr.py
+python3 scripts/extract_orcr.py
 ```

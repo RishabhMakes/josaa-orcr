@@ -1,4 +1,6 @@
 .DS_Store
+# Local 2026 source spreadsheets / scratch analysis — kept out of version control.
+2026-source/
 __pycache__/
 *.pyc
 .venv/

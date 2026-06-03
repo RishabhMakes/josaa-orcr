@@ -245,8 +245,8 @@ def tier_note(branch: str, inst: str) -> tuple[str, str]:
 
 
 def main() -> None:
-    here = Path(__file__).resolve().parent
-    src = here / "branch_pairs.csv"
+    data_dir = Path(__file__).resolve().parent.parent / "data"
+    src = data_dir / "branch_pairs.csv"
 
     rows: list[dict[str, str]] = []
     with src.open(newline="", encoding="utf-8") as f:

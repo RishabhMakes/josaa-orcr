@@ -20,15 +20,15 @@ YEAR_RX = re.compile(r"^(20\d{2})\.csv$")
 
 
 def main() -> None:
-    here = Path(__file__).resolve().parent
+    data_dir = Path(__file__).resolve().parent.parent / "data"
     sources: list[tuple[str, Path]] = []
-    for p in sorted(here.iterdir()):
+    for p in sorted(data_dir.iterdir()):
         m = YEAR_RX.match(p.name)
         if m:
             sources.append((m.group(1), p))
 
     if not sources:
-        raise SystemExit("No year CSVs (e.g. 2024.csv) found next to this script.")
+        raise SystemExit(f"No year CSVs (e.g. 2024.csv) found in {data_dir}.")
 
     pair_years: dict[tuple[str, str], set[str]] = defaultdict(set)
     for year, path in sources:
@@ -49,7 +49,7 @@ def main() -> None:
                     continue
                 pair_years[(inst, branch)].add(year)
 
-    out = here / "branch_pairs.csv"
+    out = data_dir / "branch_pairs.csv"
     rows = sorted(pair_years.items(), key=lambda kv: (kv[0][0], kv[0][1]))
     with out.open("w", newline="", encoding="utf-8") as f:
         w = csv.writer(f)
