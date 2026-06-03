@@ -1271,6 +1271,10 @@ function init() {
     const showGender = showGenderColumn();
     const showDegree = showDegreeColumn();
     const showOpening = !!state.columns.opening || !!state.filters.shortlistOnly;
+    // Export comments when in shortlist mode or whenever any exported row
+    // actually carries a note, so ordinary filtered exports stay unchanged.
+    const showComment = !!state.filters.shortlistOnly
+      || rows.some(r => (state.shortlistComments[rowKey(r)] || "").trim() !== "");
     // Tier ships with the row data unconditionally (it's a property, not a
     // visual toggle).
     const headers = ["Year","Institute","Branch","Tier","Duration (Years)"];
@@ -1279,6 +1283,7 @@ function init() {
     if (showOpening) headers.push("Opening Rank");
     headers.push("Closing Rank");
     if (hasRank) headers.push("Margin");
+    if (showComment) headers.push("Comment");
     const lines = [headers.join(",")];
     for (const r of rows) {
       const margin = hasRank && r.closing != null ? r.closing - state.filters.myRank : "";
@@ -1288,6 +1293,7 @@ function init() {
       if (showOpening) cells.push(r.opening ?? "");
       cells.push(r.closing ?? "");
       if (hasRank) cells.push(margin);
+      if (showComment) cells.push(state.shortlistComments[rowKey(r)] || "");
       lines.push(cells.map(csvField).join(","));
     }
     const blob = new Blob([lines.join("\n")], { type: "text/csv" });
